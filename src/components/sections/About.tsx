@@ -6,31 +6,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const personalStats = [
-  { value: "01", label: "BSCS Student" },
-  { value: "02", label: "Years + Coding" },
-  { value: "07", label: "Projects Built" },
-];
-
 export default function About() {
   const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    [leftRef, rightRef].forEach((ref) => {
-      if (!ref.current) return;
+    if (leftRef.current) {
       gsap.fromTo(
-        ref.current,
+        leftRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
           ease: "power3.out",
-          scrollTrigger: { trigger: ref.current, start: "top 85%" },
+          scrollTrigger: { trigger: leftRef.current, start: "top 85%" },
         }
       );
-    });
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -43,8 +35,7 @@ export default function About() {
         <div className="section-eyebrow">Who I am</div>
         <h2 className="section-title">About Me</h2>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-          <div ref={leftRef} className="flex flex-col justify-center">
+        <div ref={leftRef} className="mt-12 max-w-3xl flex flex-col">
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light">
               Hi, I&apos;m <span className="text-fg font-medium">Zuneera Tariq</span> — a
               Computer Science undergraduate at COMSATS University Islamabad
@@ -79,23 +70,6 @@ export default function About() {
               </svg>
             </a>
           </div>
-
-          <div
-            ref={rightRef}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 content-center"
-          >
-            {personalStats.map((stat) => (
-              <div key={stat.label} className="card flex flex-col gap-2">
-                <span className="font-display text-4xl text-accent">
-                  {stat.value}
-                </span>
-                <span className="text-sm text-fg-muted font-light">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
