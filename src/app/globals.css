@@ -11,6 +11,14 @@
   --color-accent-dim: #99CC00;
   --color-border: #222222;
   --color-border-light: #333333;
+
+  --lang-js: #F7DF1E;
+  --lang-java: #E76F00;
+  --lang-python: #66A3D2;
+  --lang-csharp: #8A5CF6;
+  --lang-c: #6C9BD1;
+  --lang-html: #E34F26;
+  --lang-css: #3C9BE0;
 }
 
 [data-theme="light"] {
@@ -24,6 +32,14 @@
   --color-accent-dim: #B45309;
   --color-border: #E5E5E0;
   --color-border-light: #D0D0CA;
+
+  --lang-js: #C2AD00;
+  --lang-java: #B35600;
+  --lang-python: #2C6FA3;
+  --lang-csharp: #6C3BA8;
+  --lang-c: #3C6BA3;
+  --lang-html: #B23A14;
+  --lang-css: #1E6DA8;
 }
 
 @theme inline {
