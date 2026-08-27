@@ -310,3 +310,160 @@ p {
   justify-content: center;
   transition: transform 0.3s var(--ease-out-expo);
 }
+
+/* --- Cinematic 3D isometric hero scene --- */
+.hero-3d-scene {
+  width: 380px;
+  height: 380px;
+  perspective: 1400px;
+  position: relative;
+}
+
+.hero-3d-stage {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Central cube */
+.hero-cube-wrap {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  transform-style: preserve-3d;
+  animation: cube-spin 22s linear infinite;
+}
+
+.hero-cube {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: cube-tilt 9s ease-in-out infinite alternate;
+}
+
+.hero-cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      color-mix(in srgb, var(--color-accent) 4%, transparent));
+  box-shadow: 0 0 30px color-mix(in srgb, var(--color-accent) 25%, transparent) inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-cube-face.front  { transform: translateZ(70px); }
+.hero-cube-face.back   { transform: rotateY(180deg) translateZ(70px); }
+.hero-cube-face.right  { transform: rotateY(90deg) translateZ(70px); }
+.hero-cube-face.left   { transform: rotateY(-90deg) translateZ(70px); }
+.hero-cube-face.top    { transform: rotateX(90deg) translateZ(70px); }
+.hero-cube-face.bottom { transform: rotateX(-90deg) translateZ(70px); }
+
+/* Gimbal rings (orbiting lines) */
+.hero-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border: 1px solid color-mix(in srgb, var(--color-border-light) 65%, transparent);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+
+.hero-ring.ring-x { animation: ring-spin-x 16s linear infinite; }
+.hero-ring.ring-y { animation: ring-spin-y 26s linear infinite; }
+.hero-ring.ring-z { animation: ring-spin-z 20s linear infinite; }
+
+/* Small orbiting satellite dots */
+.hero-satellite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 70%, transparent);
+}
+
+/* Floating geometric planes at depth */
+.hero-plane {
+  position: absolute;
+  transform-style: preserve-3d;
+  opacity: 0.35;
+}
+
+.hero-plane.p1 {
+  top: 6%;
+  left: 4%;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--color-accent);
+  transform: rotateZ(45deg) rotateX(40deg) rotateY(20deg);
+}
+
+.hero-plane.p2 {
+  bottom: 10%;
+  right: 2%;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-accent-dim);
+  transform: rotateZ(30deg) rotateX(-40deg);
+}
+
+.hero-plane.p3 {
+  top: 18%;
+  right: 14%;
+  width: 34px;
+  height: 34px;
+  background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  border-radius: 8px;
+  transform: rotateZ(60deg) rotateY(30deg);
+}
+
+.hero-globe-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--color-accent) 22%, transparent) 0%,
+    transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+@keyframes cube-spin {
+  from { transform: rotateY(0deg) rotateX(12deg); }
+  to   { transform: rotateY(360deg) rotateX(12deg); }
+}
+
+@keyframes cube-tilt {
+  from { transform: rotateX(-8deg); }
+  to   { transform: rotateX(8deg); }
+}
+
+@keyframes ring-spin-x {
+  from { transform: translate(-50%, -50%) rotateY(0deg) rotateX(80deg); }
+  to   { transform: translate(-50%, -50%) rotateY(360deg) rotateX(80deg); }
+}
+
+@keyframes ring-spin-y {
+  from { transform: translate(-50%, -50%) rotateY(0deg); }
+  to   { transform: translate(-50%, -50%) rotateY(360deg); }
+}
+
+@keyframes ring-spin-z {
+  from { transform: translate(-50%, -50%) rotateX(90deg) rotateZ(0deg); }
+  to   { transform: translate(-50%, -50%) rotateX(90deg) rotateZ(360deg); }
+}

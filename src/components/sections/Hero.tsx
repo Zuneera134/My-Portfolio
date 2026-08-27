@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const badge = useRef<HTMLDivElement>(null);
@@ -10,8 +13,14 @@ export default function Hero() {
   const actions = useRef<HTMLDivElement>(null);
   const stats = useRef<HTMLDivElement>(null);
   const visual = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  // Handle reduced-motion: disable continuous 3D spin
+  const prefersReduced = useRef(false);
 
   useEffect(() => {
+    prefersReduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const list = [badge, name, desc, actions, stats, visual];
     const tl = gsap.timeline({ delay: 0.2 });
     list.forEach((r, i) => {
@@ -24,21 +33,41 @@ export default function Hero() {
       );
     });
 
+    // Gentle float on satellite dots / planes (layered objects)
     const floating = gsap.utils.toArray<HTMLElement>(".hero-float");
     const floatTweens = floating.map((el) =>
       gsap.to(el, {
-        y: -14,
-        duration: 2.4 + Math.random() * 1.4,
+        y: -16,
+        duration: 2.6 + Math.random() * 1.6,
         yoyo: true,
         repeat: -1,
         ease: "sine.inOut",
-        delay: Math.random(),
+        delay: Math.random() * 2,
       })
     );
+
+    // Cinematic scroll-reactive parallax tilt on the whole 3D stage
+    const parallax =
+      stageRef.current && !prefersReduced.current
+        ? gsap.to(stageRef.current, {
+            rotationY: 28,
+            rotationX: -10,
+            y: -30,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero-section",
+              start: "top top",
+              end: "bottom top",
+              scrub: 1,
+            },
+          })
+        : null;
 
     return () => {
       tl.kill();
       floatTweens.forEach((t) => t.kill());
+      parallax?.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -47,8 +76,16 @@ export default function Hero() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Reusable satellite dot helper positions
+  const satellites = [
+    { top: "18%", left: "64%", delay: "0s" },
+    { top: "58%", left: "84%", delay: "1.5s" },
+    { top: "78%", left: "30%", delay: "3s" },
+    { top: "30%", left: "18%", delay: "4.5s" },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden section-padding">
+    <section className="hero-section relative min-h-screen flex items-center overflow-hidden section-padding">
       {/* Ambient glow */}
       <div
         className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full opacity-[0.08] pointer-events-none"
@@ -60,7 +97,7 @@ export default function Hero() {
 
       {/* Second glow behind visual */}
       <div
-        className="absolute bottom-[-10%] right-[10%] w-[420px] h-[420px] rounded-full opacity-[0.06] pointer-events-none"
+        className="absolute bottom-[-10%] right-[10%] w-[480px] h-[480px] rounded-full opacity-[0.07] pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
@@ -141,106 +178,64 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: eye-catching visual */}
+          {/* Right: cinematic 3D isometric scene */}
           <div ref={visual} className="hidden lg:flex justify-center opacity-0">
-            <div className="relative w-[340px] h-[440px]">
-              {/* Accent gradient ring frame */}
-              <div className="absolute inset-0 rounded-[2rem] opacity-[0.12 blur-[2px]"
-                style={{
-                  background:
-                    "linear-gradient(160deg, var(--color-accent) 0%, transparent 45%, var(--color-accent) 100%)",
-                }}
-              />
+            <div className="hero-3d-scene select-none">
+              {/* Soft accent glow behind everything */}
+              <div className="hero-globe-glow" />
 
-              {/* Profile card */}
-              <div className="relative w-full h-full rounded-[2rem] border border-border bg-bg-elevated p-8 flex flex-col items-center justify-center text-center overflow-hidden">
-                {/* top-left index */}
-                <span className="absolute top-5 left-6 text-[10px] font-mono uppercase tracking-[0.25em] text-fg-dim">
-                  zt.v1
-                </span>
-                {/* top-right live dot */}
-                <span className="absolute top-5 right-6 flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-fg-dim">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  live
-                </span>
+              <div ref={stageRef} className="hero-3d-stage">
+                {/* Central rotating cube */}
+                <div className="hero-cube-wrap">
+                  <div className="hero-cube">
+                    {[
+                      ["front", "ZT"],
+                      ["back", "ZT"],
+                      ["right", "ZT"],
+                      ["left", "ZT"],
+                      ["top", "ZT"],
+                      ["bottom", "ZT"],
+                    ].map(([face, label]) => (
+                      <div key={face} className={`hero-cube-face ${face}`}>
+                        <span className="font-mono text-[10px] tracking-[0.2em] text-gradient-accent">
+                          {label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                {/* Monogram */}
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-full opacity-30 blur-2xl"
-                    style={{ background: "var(--color-accent)" }}
+                {/* Orbit rings */}
+                <div className="hero-ring ring-x" />
+                <div className="hero-ring ring-y" />
+                <div className="hero-ring ring-z" />
+
+                {/* Floating geometric planes at depth */}
+                <div className="hero-float">
+                  <div className="hero-plane p1" />
+                </div>
+                <div className="hero-float">
+                  <div className="hero-plane p2" />
+                </div>
+                <div className="hero-float">
+                  <div className="hero-plane p3" />
+                </div>
+
+                {/* Orbiting accent dots */}
+                {satellites.map((s, i) => (
+                  <span
+                    key={i}
+                    className="hero-satellite hero-float"
+                    style={{ top: s.top, left: s.left, animationDelay: s.delay }}
                   />
-                  <div className="hero-float relative w-28 h-28 rounded-full bg-bg-muted border border-border-light flex items-center justify-center">
-                    <span className="font-display text-5xl font-medium text-gradient-accent">
-                      ZT
-                    </span>
-                  </div>
-                </div>
+                ))}
 
-                <p className="mt-6 text-[11px] font-mono uppercase tracking-[0.3em] text-fg-muted">
-                  Full-Stack Developer
-                </p>
-                <p className="mt-2 text-sm font-light text-fg-dim">
-                  React · Node.js · SQL · MongoDB
-                </p>
-
-                {/* Divider */}
-                <div className="mt-6 w-full h-px bg-border" />
-
-                <div className="mt-5 w-full space-y-2 text-left">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-mono text-fg-dim">based in</span>
-                    <span className="text-fg font-light">Mansehra, Pakistan</span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-mono text-fg-dim">education</span>
-                    <span className="text-fg font-light">BS CS @ COMSATS</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating terminal card */}
-              <div className="hero-float absolute -top-6 -right-8 w-48 rounded-xl border border-border-light bg-bg-muted shadow-xl overflow-hidden">
-                <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border">
-                  <span className="w-2 h-2 rounded-full bg-red-500/70" />
-                  <span className="w-2 h-2 rounded-full bg-yellow-500/70" />
-                  <span className="w-2 h-2 rounded-full bg-green-500/70" />
-                  <span className="ml-2 text-[9px] font-mono tracking-wider text-fg-dim">
-                    ~/build.ts
+                {/* Subtle stack caption */}
+                <div className="hero-float absolute bottom-[-8px] left-1/2 -translate-x-1/2 whitespace-nowrap">
+                  <span className="text-xs font-mono tracking-[0.25em] text-fg-dim uppercase">
+                    React · Node.js · SQL · MongoDB
                   </span>
                 </div>
-                <div className="px-3 py-3 font-mono text-[10px] leading-relaxed">
-                  <div>
-                    <span className="text-accent">$</span>{" "}
-                    <span className="text-fg">next build</span>
-                  </div>
-                  <div className="text-fg-muted">✓ Compiled successfully</div>
-                  <div className="text-fg-muted">✓ 7 projects shipped</div>
-                  <div className="text-accent">✓ Ready</div>
-                </div>
-              </div>
-
-              {/* Floating tech badge - React */}
-              <div className="hero-float absolute -bottom-5 -left-10 px-4 py-2.5 rounded-full border border-border-light bg-bg-elevated text-xs font-mono flex items-center gap-2 shadow-lg">
-                <span className="w-2 h-2 rounded-full" style={{ background: "var(--lang-js)" }} />
-                <span className="text-fg">React</span>
-              </div>
-
-              {/* Floating tech badge - Node */}
-              <div className="hero-float absolute top-16 -left-14 px-4 py-2.5 rounded-full border border-border-light bg-bg-elevated text-xs font-mono flex items-center gap-2 shadow-lg">
-                <span className="w-2 h-2 rounded-full" style={{ background: "var(--lang-js)" }} />
-                <span className="text-fg">Node.js</span>
-              </div>
-
-              {/* Floating badge - MySQL */}
-              <div className="hero-float absolute bottom-16 -right-9 px-4 py-2.5 rounded-full border border-border-light bg-bg-elevated text-xs font-mono flex items-center gap-2 shadow-lg">
-                <span className="w-2 h-2 rounded-full" style={{ background: "var(--lang-css)" }} />
-                <span className="text-fg">MongoDB</span>
-              </div>
-
-              {/* Floating badge - SQL */}
-              <div className="hero-float absolute bottom-4 -left-8 px-4 py-2.5 rounded-full border border-border-light bg-bg-elevated text-xs font-mono flex items-center gap-2 shadow-lg">
-                <span className="w-2 h-2 rounded-full" style={{ background: "var(--lang-c)" }} />
-                <span className="text-fg">SQL</span>
               </div>
             </div>
           </div>
