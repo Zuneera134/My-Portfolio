@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 
@@ -14,14 +14,18 @@ function getInitialTheme(): Theme {
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
+  useLayoutEffect(() => {
+    const saved = localStorage.getItem("theme") as Theme | null;
+    if (saved) {
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  }, []);
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
     localStorage.setItem("theme", next);
+    document.documentElement.setAttribute("data-theme", next);
   };
 
   return (
