@@ -84,10 +84,9 @@ function Experience() {
 
   return (
     <div id="experience" className="pt-0">
-      <div className="mb-8">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          Work Experience
-        </span>
+      <div className="mb-10">
+        <div className="section-eyebrow mb-4">Where I&apos;ve worked</div>
+        <h2 className="section-title">Experience</h2>
       </div>
       <div className="border-l-2 border-border pl-8 relative">
         <div className="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-accent" />
@@ -96,7 +95,7 @@ function Experience() {
             {experience[0].period}
           </div>
           <h3 className="text-2xl md:text-3xl font-light">{experience[0].role}</h3>
-          <div className="text-accent text-sm mt-1">
+          <div className="text-accent text-base mt-1">
             {experience[0].company}
           </div>
           <p className="text-fg-muted font-light mt-4 leading-relaxed max-w-2xl">
@@ -114,10 +113,9 @@ function Education() {
 
   return (
     <div id="education" className="pt-0">
-      <div className="mb-8">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          Education
-        </span>
+      <div className="mb-10">
+        <div className="section-eyebrow mb-4">My academic background</div>
+        <h2 className="section-title">Education</h2>
       </div>
       <div className="flex flex-col gap-8">
         {education.map((edu, i) => (
@@ -152,10 +150,9 @@ function Certifications() {
 
   return (
     <div id="certifications" className="pt-0">
-      <div className="mb-8">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          Certifications &amp; Training
-        </span>
+      <div className="mb-10">
+        <div className="section-eyebrow mb-4">Continuous learning</div>
+        <h2 className="section-title">Certifications</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {certifications.map((cert, i) => (

@@ -46,9 +46,8 @@ export default function Languages() {
   return (
     <section id="languages" ref={sectionRef} className="section-padding py-16 md:py-24">
       <div className="mb-8">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          Languages
-        </span>
+        <div className="section-eyebrow mb-4">What I code in</div>
+        <h2 className="section-title">Languages</h2>
       </div>
 
       <div className="flex flex-wrap gap-3">

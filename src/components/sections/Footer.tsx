@@ -54,14 +54,13 @@ export default function Footer() {
     >
       <div className="h-line mb-10" />
 
-      <div className="mb-6">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          006 — Contact
-        </span>
+      <div className="mb-10">
+        <div className="section-eyebrow mb-4">Let&apos;s work together</div>
+        <h2 className="section-title">Get in Touch</h2>
       </div>
 
       <div ref={headlineRef} className="max-w-[90vw] md:max-w-[70vw] mb-10">
-        <h2 className="text-[clamp(2.5rem,8vw,9rem)] leading-[0.95] tracking-[-0.04em] font-light">
+        <h2 className="text-[clamp(2rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.03em] font-light">
           Let&apos;s build
           <br />
           something{" "}

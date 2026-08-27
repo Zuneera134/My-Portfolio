@@ -84,7 +84,7 @@ export default function Introduction() {
           </span>
         </div>
 
-        <h2 className="text-[clamp(2rem,5.5vw,5.5rem)] leading-[1.1] tracking-[-0.03em] mb-10">
+        <h2 className="text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-[-0.03em] mb-10">
           {introWords.map((word, i) => (
             <span
               key={i}

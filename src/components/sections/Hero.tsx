@@ -170,7 +170,7 @@ export default function Hero() {
             Zuneera
           </div>
         </div>
-        <div className="overflow-hidden mb-8 md:mb-12">
+        <div className="overflow-hidden mb-6 md:mb-8">
           <div
             className="text-[clamp(3.5rem,12vw,14rem)] leading-[0.85] font-light tracking-[-0.05em] text-gradient-accent"
           >
@@ -179,36 +179,38 @@ export default function Hero() {
         </div>
 
         {/* Statement */}
-        <div className="overflow-hidden">
-          <div
-            ref={line1Ref}
-            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em] text-fg-muted"
-          >
-            Building digital
+        <div className="mt-8 md:mt-12 space-y-2">
+          <div className="overflow-hidden">
+            <div
+              ref={line1Ref}
+              className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.2] font-light tracking-[-0.02em] text-fg"
+            >
+              Building digital
+            </div>
           </div>
-        </div>
-        <div className="overflow-hidden">
-          <div
-            ref={line2Ref}
-            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em] text-fg-muted"
-          >
-            experiences that
+          <div className="overflow-hidden">
+            <div
+              ref={line2Ref}
+              className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.2] font-light tracking-[-0.02em] text-fg"
+            >
+              experiences that
+            </div>
           </div>
-        </div>
-        <div className="overflow-hidden">
-          <div
-            ref={line3Ref}
-            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em] text-fg-muted"
-          >
-            shouldn&apos;t feel
+          <div className="overflow-hidden">
+            <div
+              ref={line3Ref}
+              className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.2] font-light tracking-[-0.02em] text-fg"
+            >
+              shouldn&apos;t feel
+            </div>
           </div>
-        </div>
-        <div className="overflow-hidden">
-          <div
-            ref={line4Ref}
-            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em]"
-          >
-            ordinary.
+          <div className="overflow-hidden">
+            <div
+              ref={line4Ref}
+              className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.2] font-light tracking-[-0.02em]"
+            >
+              ordinary.
+            </div>
           </div>
         </div>
       </div>

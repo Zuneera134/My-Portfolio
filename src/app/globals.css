@@ -108,6 +108,17 @@ body {
   }
 }
 
+/* Base body typography for readability */
+body {
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+p {
+  line-height: 1.8;
+}
+
 /* Noise overlay */
 .noise-overlay {
   position: fixed;
@@ -160,6 +171,23 @@ body {
 .section-padding {
   padding-left: clamp(1.5rem, 5vw, 6rem);
   padding-right: clamp(1.5rem, 5vw, 6rem);
+}
+
+/* Consistent section title */
+.section-title {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 300;
+}
+
+/* Eyebrow label above section title */
+.section-eyebrow {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-fg-dim);
 }
 
 /* Clip reveal animation */

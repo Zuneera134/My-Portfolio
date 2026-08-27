@@ -56,9 +56,8 @@ export default function Skills() {
   return (
     <section id="skills" ref={sectionRef} className="section-padding py-16 md:py-24">
       <div className="mb-8">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          Skills
-        </span>
+        <div className="section-eyebrow mb-4">What I work with</div>
+        <h2 className="section-title">Skills</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

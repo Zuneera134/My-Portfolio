@@ -83,9 +83,8 @@ export default function Projects() {
   return (
     <section id="work" className="section-padding py-16 md:py-24">
       <div className="mb-10 md:mb-12">
-        <h2 className="text-[clamp(2rem,4.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] font-light">
-          Projects
-        </h2>
+        <div className="section-eyebrow mb-4">Selected Work</div>
+        <h2 className="section-title">Projects</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
