@@ -64,12 +64,12 @@ export default function Introduction() {
   }, []);
 
   const introWords = [
-    { text: "Not just", weight: "font-light" },
-    { text: "a student.", weight: "font-medium" },
-    { text: "I design,", weight: "font-light" },
-    { text: "engineer", weight: "font-semibold" },
-    { text: "and obsess over", weight: "font-light" },
-    { text: "digital experiences.", weight: "font-medium" },
+    { text: "The", weight: "font-light" },
+    { text: "work", weight: "font-medium" },
+    { text: "I've been", weight: "font-light" },
+    { text: "doing", weight: "font-medium" },
+    { text: "when nobody", weight: "font-light" },
+    { text: "is paying me.", weight: "font-medium" },
   ];
 
   return (
