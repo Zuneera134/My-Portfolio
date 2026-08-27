@@ -51,7 +51,7 @@ export default function About() {
 
             <a
               href="/resume.html"
-              className="btn btn-secondary group mt-8 w-fit"
+              className="btn btn-secondary group mt-10 w-fit"
               data-cursor="RESUME"
             >
               Download Resume

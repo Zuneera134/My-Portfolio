@@ -73,7 +73,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div ref={actions} className="mt-14 flex flex-wrap gap-4 opacity-0">
+        <div ref={actions} className="mt-16 flex flex-wrap gap-4 opacity-0">
           <button
             onClick={() => go("#work")}
             className="btn btn-primary group"
