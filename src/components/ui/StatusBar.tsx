@@ -22,9 +22,9 @@ export default function StatusBar() {
         if (rect.top <= window.innerHeight / 2) {
           const id = section.getAttribute("id");
           if (id === "work") current = "002";
-          else if (id === "about") current = "003";
-          else if (id === "journey") current = "004";
-          else if (id === "lab") current = "005";
+          else if (id === "languages") current = "003";
+          else if (id === "skills") current = "004";
+          else if (id === "journey") current = "005";
         }
       });
       setCurrentSection(current);

@@ -3,10 +3,9 @@
 import Hero from "@/components/sections/Hero";
 import Introduction from "@/components/sections/Introduction";
 import Projects from "@/components/sections/Projects";
-import About from "@/components/sections/About";
+import Languages from "@/components/sections/Languages";
+import Skills from "@/components/sections/Skills";
 import Journey from "@/components/sections/Journey";
-import Lab from "@/components/sections/Lab";
-import Personality from "@/components/sections/Personality";
 import Footer from "@/components/sections/Footer";
 import Navigation from "@/components/ui/Navigation";
 import Marquee from "@/components/motion/Marquee";
@@ -30,15 +29,12 @@ export default function Home() {
         <Introduction />
         <div className="h-line section-padding" />
         <Projects />
-        <Marquee text="JAVA · DATA STRUCTURES · OOP · FULL-STACK" speed={0.6} direction="right" />
         <div className="h-line section-padding" />
-        <About />
+        <Languages />
+        <div className="h-line section-padding" />
+        <Skills />
         <div className="h-line section-padding" />
         <Journey />
-        <div className="h-line section-padding" />
-        <Lab />
-        <div className="h-line section-padding" />
-        <Personality />
         <Footer />
       </main>
     </SmoothScroll>

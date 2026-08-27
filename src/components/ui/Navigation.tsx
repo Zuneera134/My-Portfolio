@@ -68,8 +68,10 @@ export default function Navigation() {
 
   const navLinks = [
     { label: "Work", href: "#work" },
-    { label: "About", href: "#about" },
-    { label: "Lab", href: "#lab" },
+    { label: "Languages", href: "#languages" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },
   ];
 

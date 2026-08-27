@@ -245,6 +245,25 @@ export default function Hero() {
               />
             </svg>
           </button>
+
+          <div className="flex flex-wrap gap-4 md:mt-2">
+            <a
+              href="https://www.linkedin.com/in/zuneera-tariq-a4b5012b5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-3 border border-border hover:border-accent hover:bg-accent hover:text-black transition-colors duration-300 text-sm font-light"
+              data-cursor="HIRE"
+            >
+              Hire Me
+            </a>
+            <a
+              href="mailto:zuratariq8@gmail.com"
+              className="inline-flex items-center gap-3 px-6 py-3 border border-border hover:border-accent transition-colors duration-300 text-sm font-light"
+              data-cursor="EMAIL"
+            >
+              Get in Touch
+            </a>
+          </div>
         </div>
       </div>
 

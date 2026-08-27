@@ -6,6 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const EMAIL = "zuratariq8@gmail.com";
+const LINKEDIN = "https://www.linkedin.com/in/zuneera-tariq-a4b5012b5";
+const GITHUB = "https://github.com/Zuneera134";
+
 export default function Footer() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
@@ -13,55 +17,29 @@ export default function Footer() {
   const metaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (headlineRef.current) {
-      gsap.fromTo(
-        headlineRef.current,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headlineRef.current,
-            start: "top 80%",
-          },
-        }
-      );
-    }
+    const els = [
+      { el: headlineRef.current, y: 60 },
+      { el: ctaRef.current, y: 40 },
+      { el: metaRef.current, y: 0 },
+    ];
 
-    if (ctaRef.current) {
+    els.forEach(({ el, y }) => {
+      if (!el) return;
       gsap.fromTo(
-        ctaRef.current,
-        { opacity: 0, y: 40 },
+        el,
+        { opacity: 0, y },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ctaRef.current,
+            trigger: el,
             start: "top 85%",
           },
         }
       );
-    }
-
-    if (metaRef.current) {
-      gsap.fromTo(
-        metaRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: metaRef.current,
-            start: "top 90%",
-          },
-        }
-      );
-    }
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -78,34 +56,37 @@ export default function Footer() {
 
       <div className="mb-8">
         <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          007 — Contact
+          006 — Contact
         </span>
       </div>
 
       <div ref={headlineRef} className="max-w-[90vw] md:max-w-[70vw] mb-16">
-        <h2 className="text-[clamp(2.5rem,7vw,8rem)] leading-[0.95] tracking-[-0.04em] font-light">
-          Have an idea?
+        <h2 className="text-[clamp(2.5rem,8vw,9rem)] leading-[0.95] tracking-[-0.04em] font-light">
+          Let&apos;s build
           <br />
-          Let&apos;s make it{" "}
-          <span className="text-gradient-accent">impossible</span>
+          something{" "}
+          <span className="text-gradient-accent">great</span>
           <br />
-          to ignore.
+          together.
         </h2>
       </div>
 
-      <div ref={ctaRef}>
+      {/* Action buttons */}
+      <div ref={ctaRef} className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6 mb-8">
         <a
-          href="mailto:[YOUR EMAIL]"
-          className="group inline-flex items-center gap-6 text-2xl md:text-4xl font-light tracking-tight hover:text-accent transition-colors duration-300"
-          data-cursor="OPEN"
+          href={LINKEDIN}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-4 px-8 py-4 border border-border hover:border-accent hover:bg-accent hover:text-black transition-colors duration-300 text-lg font-light"
+          data-cursor="CONNECT"
         >
-          Get in touch
+          Get in Touch
           <svg
-            className="w-8 h-8 md:w-12 md:h-12 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2"
+            className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={1}
+            strokeWidth={1.5}
           >
             <path
               strokeLinecap="round"
@@ -114,11 +95,60 @@ export default function Footer() {
             />
           </svg>
         </a>
+
+        <a
+          href={LINKEDIN}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-4 px-8 py-4 bg-accent text-black hover:opacity-90 transition-opacity duration-300 text-lg font-light font-mono"
+          data-cursor="HIRE"
+        >
+          Hire Me
+        </a>
+
+        <a
+          href={`mailto:${EMAIL}`}
+          className="group inline-flex items-center gap-4 px-8 py-4 border border-border hover:border-accent transition-colors duration-300 text-lg font-light"
+          data-cursor="EMAIL"
+        >
+          Email
+        </a>
+
+        <a
+          href="/resume.html"
+          className="group inline-flex items-center gap-4 px-8 py-4 border border-border hover:border-accent transition-colors duration-300 text-lg font-light"
+          data-cursor="RESUME"
+        >
+          Resume
+          <svg
+            className="w-5 h-5 transition-transform duration-500 group-hover:translate-y-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <div className="text-2xl md:text-4xl font-light tracking-tight mb-24">
+        <a
+          href={`mailto:${EMAIL}`}
+          className="hover:text-accent transition-colors duration-300 inline-block"
+          data-cursor="EMAIL"
+        >
+          {EMAIL}
+        </a>
       </div>
 
       <div
         ref={metaRef}
-        className="mt-32 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8"
       >
         <div className="flex flex-col gap-2">
           <div className="text-sm font-light text-fg-muted">
@@ -131,13 +161,14 @@ export default function Footer() {
 
         <div className="flex items-center gap-6">
           {[
-            { label: "GitHub", href: "https://github.com/Zuneera134" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/zuneera-tariq-a4b5012b5" },
-            { label: "Instagram", href: "[INSTAGRAM]" },
+            { label: "GitHub", href: GITHUB },
+            { label: "LinkedIn", href: LINKEDIN },
           ].map((link) => (
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim hover:text-accent transition-colors duration-300"
               data-cursor="OPEN"
             >
@@ -147,7 +178,7 @@ export default function Footer() {
         </div>
 
         <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-fg-dim">
-          &copy; 2026
+          &copy; 2026 Zuneera Tariq
         </div>
       </div>
     </footer>

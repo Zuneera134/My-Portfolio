@@ -64,4 +64,17 @@ export const projects: Project[] = [
     color: "#B388FF",
     link: "#",
   },
+  {
+    id: "project-05",
+    number: "05",
+    title: "My First Website",
+    subtitle: "Foundations of front-end development",
+    description:
+      "My first step into web development — a simple yet functional website built completely from scratch with HTML and CSS. Responsive layout, simple navigation, styled content sections, and a basic footer. A milestone that marked the start of my learning journey.",
+    tech: ["HTML5", "CSS3"],
+    role: "Personal Project",
+    year: "2025",
+    color: "#FFD700",
+    link: "#",
+  },
 ];
