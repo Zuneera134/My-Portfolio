@@ -7,7 +7,6 @@ export interface Project {
   tech: string[];
   role: string;
   year: string;
-  image: string;
   color: string;
   link: string;
 }
@@ -16,56 +15,52 @@ export const projects: Project[] = [
   {
     id: "project-01",
     number: "01",
-    title: "Nebula Dashboard",
-    subtitle: "Real-time analytics platform",
+    title: "College Management System",
+    subtitle: "Full-stack system with 8 role-based portals",
     description:
-      "A comprehensive analytics dashboard built for monitoring complex data streams with real-time visualization and predictive insights.",
-    tech: ["Next.js", "TypeScript", "D3.js", "WebSocket"],
-    role: "Lead Frontend Engineer",
-    year: "2025",
-    image: "/projects/project-01.jpg",
+      "A complete system that digitalizes all major college operations across 8 portals: Student, Teacher, Parent, Principal, Accountant, Admission Officer, and Exam Officer. Features secure token-based authentication with role-based access control, plus a dark/light mode. Built as a project-based experience during my internship.",
+    tech: ["React.js", "Node.js", "Express.js", "MySQL"],
+    role: "Full Stack Developer Intern — Hayat Dev",
+    year: "2026",
     color: "#CCFF00",
     link: "#",
   },
   {
     id: "project-02",
     number: "02",
-    title: "Void Studio",
-    subtitle: "Creative agency website",
+    title: "SkillLink",
+    subtitle: "Verified service provider hiring platform",
     description:
-      "An immersive digital experience for a creative studio featuring WebGL transitions, custom scroll physics, and generative visuals.",
-    tech: ["React", "Three.js", "GSAP", "WebGL"],
-    role: "Creative Developer",
-    year: "2025",
-    image: "/projects/project-02.jpg",
+      "A full-stack web application solving the lack of trust when hiring daily wage workers. Features verified service-provider profiles, ratings and reviews, an emergency service feature, and three dashboards — Admin, Worker, and Client — with secure role-based access.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Cloudinary"],
+    role: "Semester Project — Web Technologies",
+    year: "2026",
     color: "#FF6B35",
     link: "#",
   },
   {
     id: "project-03",
     number: "03",
-    title: "Pulse",
-    subtitle: "Health & fitness companion",
+    title: "Skyscrapper Stack Builder",
+    subtitle: "Block-stacking game built with Data Structures",
     description:
-      "A minimal, data-rich fitness tracking application with biometric visualization and adaptive workout recommendations.",
-    tech: ["React Native", "Node.js", "PostgreSQL", "Figma"],
-    role: "Full-Stack Developer & Designer",
-    year: "2024",
-    image: "/projects/project-03.jpg",
+      "A block-stacking game where the player places blocks precisely on top of the previous one. Uses the Stack data structure (LIFO) to manage placed blocks, with speed increasing as the game progresses and a scoreboard showing the top three highscores.",
+    tech: ["Java", "Java Swing", "OOP", "Stack"],
+    role: "Data Structures Project",
+    year: "2025",
     color: "#00F0FF",
     link: "#",
   },
   {
     id: "project-04",
     number: "04",
-    title: "Terraform Labs",
-    subtitle: "Internal tooling platform",
+    title: "Quiz Management System",
+    subtitle: "Role-based quiz platform for education",
     description:
-      "An internal developer platform for managing infrastructure deployments with visual pipeline builders and real-time monitoring.",
-    tech: ["Vue.js", "Go", "Docker", "Kubernetes"],
-    role: "Frontend Architect",
-    year: "2024",
-    image: "/projects/project-04.jpg",
+      "A simple application where admins can add or remove teachers and students, teachers can create quizzes and view results, and students can log in with their details to attempt quizzes and check results after.",
+    tech: ["Java", "Java Swing", "GUI", "OOP"],
+    role: "Group Project",
+    year: "2025",
     color: "#B388FF",
     link: "#",
   },

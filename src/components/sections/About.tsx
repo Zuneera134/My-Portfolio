@@ -8,29 +8,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const capabilities = [
   {
-    category: "Design",
-    items: ["UI Design", "Design Systems", "Prototyping", "Motion Design"],
-    philosophy: "Design is how it works, not just how it looks.",
-  },
-  {
     category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Vue.js"],
-    philosophy: "Performance is a feature, not an afterthought.",
+    items: ["React.js", "HTML5 & CSS3", "JavaScript", "Responsive Design"],
+    philosophy: "Every pixel tells a story. I make sure it's the right one.",
   },
   {
-    category: "Motion",
-    items: ["GSAP", "Framer Motion", "CSS Animation", "WebGL"],
-    philosophy: "Motion guides attention and creates meaning.",
+    category: "Backend",
+    items: ["Node.js", "Express.js", "REST APIs", "Authentication"],
+    philosophy: "Clean logic builds beautiful systems.",
   },
   {
-    category: "Systems",
-    items: ["Architecture", "API Design", "DevOps", "Testing"],
-    philosophy: "Good systems are invisible. Bad ones are everywhere.",
+    category: "Databases",
+    items: ["MySQL", "MongoDB", "Database Design", "Cloudinary"],
+    philosophy: "Data is only useful when it's organized well.",
   },
   {
-    category: "Experiments",
-    items: ["Creative Coding", "Generative Art", "WebGL", "Three.js"],
-    philosophy: "The best ideas come from playful exploration.",
+    category: "Computer Science",
+    items: ["Data Structures", "OOP", "Java", "Python"],
+    philosophy: "Strong foundations make everything else easier.",
+  },
+  {
+    category: "Full-Stack",
+    items: ["Web Development", "UI/UX", "Git & GitHub", "Teamwork"],
+    philosophy: "The web is my canvas. Code is my brush.",
   },
 ];
 

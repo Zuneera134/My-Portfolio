@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import Introduction from "@/components/sections/Introduction";
 import Projects from "@/components/sections/Projects";
 import About from "@/components/sections/About";
+import Journey from "@/components/sections/Journey";
 import Lab from "@/components/sections/Lab";
 import Personality from "@/components/sections/Personality";
 import Footer from "@/components/sections/Footer";
@@ -24,14 +25,16 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <Marquee text="DESIGN · ENGINEER · CREATE" speed={0.8} />
+        <Marquee text="REACT · NODE · MY SQL · EXPRESS" speed={0.9} />
         <div className="h-line section-padding" />
         <Introduction />
         <div className="h-line section-padding" />
         <Projects />
-        <Marquee text="PIXELS · MOTION · CODE" speed={0.6} direction="right" />
+        <Marquee text="JAVA · DATA STRUCTURES · OOP · FULL-STACK" speed={0.6} direction="right" />
         <div className="h-line section-padding" />
         <About />
+        <div className="h-line section-padding" />
+        <Journey />
         <div className="h-line section-padding" />
         <Lab />
         <div className="h-line section-padding" />

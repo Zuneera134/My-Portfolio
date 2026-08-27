@@ -78,7 +78,7 @@ export default function Footer() {
 
       <div className="mb-8">
         <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          006 — Contact
+          007 — Contact
         </span>
       </div>
 
@@ -122,17 +122,17 @@ export default function Footer() {
       >
         <div className="flex flex-col gap-2">
           <div className="text-sm font-light text-fg-muted">
-            Zuneera Tariq — Creative Developer
+            Zuneera Tariq — CS Student @ CUI &apos;28
           </div>
           <div className="text-sm font-light text-fg-dim">
-            [YOUR LOCATION]
+            Mansehra, Pakistan
           </div>
         </div>
 
         <div className="flex items-center gap-6">
           {[
             { label: "GitHub", href: "https://github.com/Zuneera134" },
-            { label: "LinkedIn", href: "[LINKEDIN]" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/zuneera-tariq-a4b5012b5" },
             { label: "Instagram", href: "[INSTAGRAM]" },
           ].map((link) => (
             <a

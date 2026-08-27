@@ -65,7 +65,7 @@ export default function Introduction() {
 
   const introWords = [
     { text: "Not just", weight: "font-light" },
-    { text: "a developer.", weight: "font-medium" },
+    { text: "a student.", weight: "font-medium" },
     { text: "I design,", weight: "font-light" },
     { text: "engineer", weight: "font-semibold" },
     { text: "and obsess over", weight: "font-light" },
@@ -98,14 +98,16 @@ export default function Introduction() {
 
         <div ref={descRef} className="max-w-xl">
           <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light">
-            I build interfaces that feel alive. From concept to deployment,
-            I obsess over every pixel, every interaction, every millisecond
-            of motion. My work lives at the intersection of design, code,
-            and creative technology.
+            I build digital experiences that feel intentional — combining
+            solid engineering with thoughtful design. From concept to
+            deployment, I care about clean architecture, secure systems,
+            and the last 2% of polish.
           </p>
           <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
-            Based in [YOUR LOCATION]. Currently building at the edge of
-            what the web can feel like.
+            BS Computer Science student at COMSATS University Islamabad.
+            Based in Mansehra, Pakistan. Currently exploring full-stack
+            development, databases, and building real-world systems
+            — one project at a time.
           </p>
         </div>
       </div>

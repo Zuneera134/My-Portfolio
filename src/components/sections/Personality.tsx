@@ -7,18 +7,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const thingsILike = [
-  "late-night ideas",
-  "beautiful interfaces",
-  "clean code",
-  "weird animations",
-  "strong coffee",
-  "ambient music",
   "building things nobody asked for",
-  "pixel-perfect execution",
-  "open source",
-  "long walks with headphones",
-  "design systems",
-  "the sound of mechanical keyboards",
+  "clean architecture",
+  "role-based systems",
+  "a stack that finally works",
+  "strong coffee",
+  "solving real-world problems",
+  "learning by building",
+  "Java & Python",
+  "the satisfaction of a passing build",
+  "team projects",
+  "the last 2% of polish",
+  "experimenting with new tools",
 ];
 
 export default function Personality() {
@@ -57,7 +57,7 @@ export default function Personality() {
     >
       <div className="mb-16 md:mb-24">
         <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          005 — Personality
+          006 — Personality
         </span>
       </div>
 

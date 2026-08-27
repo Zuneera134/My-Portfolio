@@ -252,7 +252,7 @@ export default function Lab() {
     >
       <div className="mb-16 md:mb-24">
         <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          004 — Lab
+          005 — Lab
         </span>
         <h2 className="text-[clamp(2rem,4vw,4.5rem)] leading-[1.1] tracking-[-0.03em] font-light mt-8">
           Things I build when

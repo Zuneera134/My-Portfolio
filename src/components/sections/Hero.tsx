@@ -5,6 +5,7 @@ import gsap from "gsap";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLDivElement>(null);
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const line3Ref = useRef<HTMLDivElement>(null);
@@ -13,7 +14,6 @@ export default function Hero() {
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const bgGradientRef = useRef<HTMLDivElement>(null);
   const mouseFollowerRef = useRef<HTMLDivElement>(null);
-  const mousePosRef = useRef({ x: 0, y: 0 });
 
   const animateMouseMove = useCallback(
     (e: MouseEvent) => {
@@ -22,16 +22,14 @@ export default function Hero() {
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      mousePosRef.current = { x, y };
-
       // Parallax on text lines
-      const lines = [line1Ref, line2Ref, line3Ref, line4Ref];
+      const lines = [nameRef, line1Ref, line2Ref, line3Ref, line4Ref];
       lines.forEach((lineRef, i) => {
         if (!lineRef.current) return;
-        const depth = (i + 1) * 3;
+        const depth = (i + 1) * 2.5;
         gsap.to(lineRef.current, {
-          x: x * depth * 15,
-          y: y * depth * 5,
+          x: x * depth * 12,
+          y: y * depth * 4,
           duration: 1,
           ease: "power2.out",
         });
@@ -73,25 +71,31 @@ export default function Hero() {
     const tl = gsap.timeline({ delay: 0.3 });
 
     tl.fromTo(
-      line1Ref.current,
-      { y: 120, opacity: 0, skewY: 4 },
-      { y: 0, opacity: 1, skewY: 0, duration: 1.2, ease: "power4.out" }
+      nameRef.current,
+      { y: 80, opacity: 0, skewY: 3 },
+      { y: 0, opacity: 1, skewY: 0, duration: 1.4, ease: "power4.out" }
     )
       .fromTo(
+        line1Ref.current,
+        { y: 100, opacity: 0, skewY: 3 },
+        { y: 0, opacity: 1, skewY: 0, duration: 1.2, ease: "power4.out" },
+        "-=0.8"
+      )
+      .fromTo(
         line2Ref.current,
-        { y: 120, opacity: 0, skewY: 4 },
+        { y: 100, opacity: 0, skewY: 3 },
         { y: 0, opacity: 1, skewY: 0, duration: 1.2, ease: "power4.out" },
         "-=0.9"
       )
       .fromTo(
         line3Ref.current,
-        { y: 120, opacity: 0, skewY: 4 },
+        { y: 100, opacity: 0, skewY: 3 },
         { y: 0, opacity: 1, skewY: 0, duration: 1.2, ease: "power4.out" },
         "-=0.9"
       )
       .fromTo(
         line4Ref.current,
-        { y: 120, opacity: 0, skewY: 4 },
+        { y: 100, opacity: 0, skewY: 3 },
         { y: 0, opacity: 1, skewY: 0, duration: 1.2, ease: "power4.out" },
         "-=0.9"
       )
@@ -156,11 +160,29 @@ export default function Hero() {
       />
 
       {/* Hero Typography */}
-      <div className="relative z-10 max-w-[90vw]">
+      <div className="relative z-10 max-w-[95vw]">
+        {/* Giant Name */}
+        <div className="overflow-hidden mb-2 md:mb-4">
+          <div
+            ref={nameRef}
+            className="text-[clamp(3.5rem,12vw,14rem)] leading-[0.85] font-medium tracking-[-0.05em]"
+          >
+            Zuneera
+          </div>
+        </div>
+        <div className="overflow-hidden mb-8 md:mb-12">
+          <div
+            className="text-[clamp(3.5rem,12vw,14rem)] leading-[0.85] font-light tracking-[-0.05em] text-gradient-accent"
+          >
+            Tariq
+          </div>
+        </div>
+
+        {/* Statement */}
         <div className="overflow-hidden">
           <div
             ref={line1Ref}
-            className="text-[clamp(2.8rem,8vw,9rem)] leading-[0.9] font-light tracking-[-0.04em]"
+            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em] text-fg-muted"
           >
             Building digital
           </div>
@@ -168,7 +190,7 @@ export default function Hero() {
         <div className="overflow-hidden">
           <div
             ref={line2Ref}
-            className="text-[clamp(2.8rem,8vw,9rem)] leading-[0.9] font-light tracking-[-0.04em]"
+            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em] text-fg-muted"
           >
             experiences that
           </div>
@@ -176,7 +198,7 @@ export default function Hero() {
         <div className="overflow-hidden">
           <div
             ref={line3Ref}
-            className="text-[clamp(2.8rem,8vw,9rem)] leading-[0.9] font-light tracking-[-0.04em] text-gradient-accent"
+            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em] text-fg-muted"
           >
             shouldn&apos;t feel
           </div>
@@ -184,7 +206,7 @@ export default function Hero() {
         <div className="overflow-hidden">
           <div
             ref={line4Ref}
-            className="text-[clamp(2.8rem,8vw,9rem)] leading-[0.9] font-light tracking-[-0.04em]"
+            className="text-[clamp(1.4rem,3.5vw,3.5rem)] leading-[1.1] font-light tracking-[-0.02em]"
           >
             ordinary.
           </div>
@@ -198,7 +220,7 @@ export default function Hero() {
       >
         <div className="flex flex-col gap-4">
           <div className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-            Available for selected projects — 2026
+            CS Student @ CUI &apos;28 — Mansehra, Pakistan
           </div>
           <button
             onClick={handleEnterWork}
