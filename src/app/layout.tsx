@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,13 +48,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" data-theme="dark" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrains.variable} ${playfair.variable} min-h-full`}>
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,
-          }}
-        />
         {children}
       </body>
     </html>
