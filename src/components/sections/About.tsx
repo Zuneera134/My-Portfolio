@@ -37,16 +37,20 @@ export default function About() {
 
         <div ref={leftRef} className="mt-12 max-w-3xl flex flex-col">
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light">
-              Hi, I&apos;m <span className="text-fg font-medium">Zuneera Tariq</span> — a
-              Computer Science undergraduate at COMSATS University Islamabad
-              (Abbottabad), passionate about building things that feel
-              intentional and work reliably.
+              I am Zuneera Tariq, a Computer Science undergraduate at COMSATS
+              University Islamabad, Abbottabad Campus. I focus on building
+              reliable, secure, and thoughtfully designed software across the
+              full stack.
             </p>
-            <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-5">
-              I care about clean architecture, secure systems, and the small
-              details that turn good ideas into polished products. When I&apos;m
-              not writing code, I&apos;m learning something new, documenting my
-              journey, or enjoying a cup of coffee in Mansehra, Pakistan.
+            <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
+              My work spans front-end development with React, back-end systems
+              with Node.js and Express, and database design with MySQL and
+              MongoDB. I care about clean architecture, clear code, and the
+              small details that make a product feel professional.
+            </p>
+            <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
+              I am currently exploring new technologies and building real-world
+              projects to grow as a developer, based in Mansehra, Pakistan.
             </p>
 
             <a

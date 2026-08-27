@@ -34,6 +34,7 @@ export default function ThemeToggle() {
     >
       <span className="relative w-4 h-4">
         <span
+          suppressHydrationWarning
           className={`absolute inset-0 rounded-full transition-all duration-500 ease-[var(--ease-out-expo)] ${
             theme === "dark" ? "bg-accent opacity-100" : "bg-accent opacity-30"
           }`}
