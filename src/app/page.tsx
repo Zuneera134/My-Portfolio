@@ -22,7 +22,7 @@ export default function Home() {
       <StatusBar />
       <div className="noise-overlay" />
       <Navigation />
-      <main>
+      <main className="flex min-h-screen flex-col">
         <Hero />
         <Marquee text="REACT · NODE · MY SQL · EXPRESS" speed={0.9} />
         <Introduction />
