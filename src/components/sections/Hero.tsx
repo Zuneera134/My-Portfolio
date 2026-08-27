@@ -76,14 +76,6 @@ export default function Hero() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Reusable satellite dot helper positions
-  const satellites = [
-    { top: "18%", left: "64%", delay: "0s" },
-    { top: "58%", left: "84%", delay: "1.5s" },
-    { top: "78%", left: "30%", delay: "3s" },
-    { top: "30%", left: "18%", delay: "4.5s" },
-  ];
-
   return (
     <section className="hero-section relative min-h-screen flex items-center overflow-hidden section-padding">
       {/* Ambient glow */}
@@ -178,63 +170,116 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: cinematic 3D isometric scene */}
+          {/* Right: custom isometric coding world */}
           <div ref={visual} className="hidden lg:flex justify-center opacity-0">
-            <div className="hero-3d-scene select-none">
-              {/* Soft accent glow behind everything */}
-              <div className="hero-globe-glow" />
+            <div className="hero-world-scene select-none">
+              <div className="hero-world-glow" />
 
-              <div ref={stageRef} className="hero-3d-stage">
-                {/* Central rotating cube */}
-                <div className="hero-cube-wrap">
-                  <div className="hero-cube">
-                    {[
-                      ["front", "ZT"],
-                      ["back", "ZT"],
-                      ["right", "ZT"],
-                      ["left", "ZT"],
-                      ["top", "ZT"],
-                      ["bottom", "ZT"],
-                    ].map(([face, label]) => (
-                      <div key={face} className={`hero-cube-face ${face}`}>
-                        <span className="font-mono text-[10px] tracking-[0.2em] text-gradient-accent">
-                          {label}
-                        </span>
+              <div ref={stageRef} className="hero-world-stage">
+                {/* Isometric grid platform */}
+                <div className="hero-grid" />
+
+                {/* Central isometric monitor with live code */}
+                <div className="hero-monitor">
+                  <div className="hero-monitor-body">
+                    <div className="hero-monitor-screen">
+                      <div className="row">
+                        <span className="hero-code-kw">const</span>
+                        <span style={{ width: "5px" }} />
+                        <span className="hero-code-var">zun</span>
+                        <span className="hero-code-plain"> = </span>
+                        <span className="hero-code-str">&quot;full-stack&quot;</span>
+                        <span className="hero-code-plain">;</span>
                       </div>
-                    ))}
+                      <div className="row">
+                        <span className="hero-code-plain">  stack(</span>
+                        <span className="hero-code-str">&quot;react&quot;</span>
+                        <span className="hero-code-plain">, </span>
+                        <span className="hero-code-str">&quot;node&quot;</span>
+                        <span className="hero-code-plain">,</span>
+                      </div>
+                      <div className="row">
+                        <span className="hero-code-plain">       </span>
+                        <span className="hero-code-str">&quot;sql&quot;</span>
+                        <span className="hero-code-plain">, </span>
+                        <span className="hero-code-str">&quot;mongo&quot;</span>
+                        <span className="hero-code-plain"> )</span>
+                      </div>
+                      <div className="row">
+                        <span className="hero-code-kw">return</span>
+                        <span className="hero-code-plain"> insights;</span>
+                      </div>
+                      <div className="row">
+                        <span className="hero-code-plain">{'}'});</span>
+                      </div>
+                      <div className="row">
+                        <span className="hero-cursor" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hero-monitor-base" />
+                </div>
+
+                {/* Floating terminal */}
+                <div className="hero-card hero-card-terminal hero-float">
+                  <div className="bar">
+                    <span className="dot" style={{ background: "#f87171" }} />
+                    <span className="dot" style={{ background: "#fbbf24" }} />
+                    <span className="dot" style={{ background: "#34d399" }} />
+                  </div>
+                  <div className="body">
+                    <div>
+                      <span className="hero-code-kw">$</span>{" "}
+                      <span className="hero-code-plain">npm run dev</span>
+                    </div>
+                    <div className="hero-code-str">✓ compiled</div>
+                    <div className="hero-code-plain">7 projects shipped</div>
+                    <div className="hero-code-kw">✓ ready</div>
                   </div>
                 </div>
 
-                {/* Orbit rings */}
-                <div className="hero-ring ring-x" />
-                <div className="hero-ring ring-y" />
-                <div className="hero-ring ring-z" />
-
-                {/* Floating geometric planes at depth */}
-                <div className="hero-float">
-                  <div className="hero-plane p1" />
-                </div>
-                <div className="hero-float">
-                  <div className="hero-plane p2" />
-                </div>
-                <div className="hero-float">
-                  <div className="hero-plane p3" />
+                {/* Floating code window */}
+                <div className="hero-card hero-card-window hero-float">
+                  <div className="head">
+                    <span>build</span>
+                    <span>CI</span>
+                  </div>
+                  <div className="lines">
+                    <div className="chip" />
+                    <div className="chip mid" />
+                    <div className="chip short" />
+                  </div>
                 </div>
 
-                {/* Orbiting accent dots */}
-                {satellites.map((s, i) => (
-                  <span
-                    key={i}
-                    className="hero-satellite hero-float"
-                    style={{ top: s.top, left: s.left, animationDelay: s.delay }}
-                  />
-                ))}
+                {/* Database cylinder stack */}
+                <div className="hero-db hero-float">
+                  <div className="hero-disc">
+                    <span className="label">SQL</span>
+                  </div>
+                  <div className="hero-disc mid">
+                    <span className="label">MONGO</span>
+                  </div>
+                  <div className="hero-disc">
+                    <span className="label">DB</span>
+                  </div>
+                </div>
 
-                {/* Subtle stack caption */}
-                <div className="hero-float absolute bottom-[-8px] left-1/2 -translate-x-1/2 whitespace-nowrap">
-                  <span className="text-xs font-mono tracking-[0.25em] text-fg-dim uppercase">
-                    React · Node.js · SQL · MongoDB
-                  </span>
+                {/* Floating tech tokens */}
+                <div className="hero-token t-react hero-float">
+                  <span className="tk-dot" style={{ background: "#61DAFB" }} />
+                  React
+                </div>
+                <div className="hero-token t-node hero-float">
+                  <span className="tk-dot" style={{ background: "#3C873A" }} />
+                  Node.js
+                </div>
+                <div className="hero-token t-sql hero-float">
+                  <span className="tk-dot" style={{ background: "var(--lang-c)" }} />
+                  SQL
+                </div>
+                <div className="hero-token t-mongo hero-float">
+                  <span className="tk-dot" style={{ background: "#4DB33D" }} />
+                  MongoDB
                 </div>
               </div>
             </div>
