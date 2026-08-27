@@ -180,7 +180,7 @@ export default function Hero() {
                   Full-Stack Developer
                 </p>
                 <p className="mt-2 text-sm font-light text-fg-dim">
-                  React · Node.js · MongoDB
+                  React · Node.js · SQL · MongoDB
                 </p>
 
                 {/* Divider */}
@@ -235,6 +235,12 @@ export default function Hero() {
               <div className="hero-float absolute bottom-16 -right-9 px-4 py-2.5 rounded-full border border-border-light bg-bg-elevated text-xs font-mono flex items-center gap-2 shadow-lg">
                 <span className="w-2 h-2 rounded-full" style={{ background: "var(--lang-css)" }} />
                 <span className="text-fg">MongoDB</span>
+              </div>
+
+              {/* Floating badge - SQL */}
+              <div className="hero-float absolute bottom-4 -left-8 px-4 py-2.5 rounded-full border border-border-light bg-bg-elevated text-xs font-mono flex items-center gap-2 shadow-lg">
+                <span className="w-2 h-2 rounded-full" style={{ background: "var(--lang-c)" }} />
+                <span className="text-fg">SQL</span>
               </div>
             </div>
           </div>
