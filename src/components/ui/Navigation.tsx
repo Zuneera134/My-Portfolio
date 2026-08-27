@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,32 +103,36 @@ export default function Navigation() {
             Zuneera Tariq
           </div>
 
-          <button
-            ref={menuBtnRef}
-            onClick={toggleMenu}
-            className="flex items-center gap-3 text-sm font-mono tracking-[0.15em] uppercase text-fg hover:text-accent transition-colors duration-300"
-            data-cursor="MENU"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            <span className="relative flex items-center justify-center w-8 h-8">
-              <span
-                className={`absolute h-[1px] bg-current transition-all duration-500 ease-[var(--ease-out-expo)] ${
-                  isOpen
-                    ? "w-6 rotate-45"
-                    : "w-6 -translate-y-[5px]"
-                }`}
-              />
-              <span
-                className={`absolute h-[1px] bg-current transition-all duration-500 ease-[var(--ease-out-expo)] ${
-                  isOpen
-                    ? "w-6 -rotate-45"
-                    : "w-4 translate-y-[5px] translate-x-[2px]"
-                }`}
-              />
-            </span>
-            {isOpen ? "Close" : "Menu"}
-          </button>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+
+            <button
+              ref={menuBtnRef}
+              onClick={toggleMenu}
+              className="flex items-center gap-3 text-sm font-mono tracking-[0.15em] uppercase text-fg hover:text-accent transition-colors duration-300"
+              data-cursor="MENU"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              <span className="relative flex items-center justify-center w-8 h-8">
+                <span
+                  className={`absolute h-[1px] bg-current transition-all duration-500 ease-[var(--ease-out-expo)] ${
+                    isOpen
+                      ? "w-6 rotate-45"
+                      : "w-6 -translate-y-[5px]"
+                  }`}
+                />
+                <span
+                  className={`absolute h-[1px] bg-current transition-all duration-500 ease-[var(--ease-out-expo)] ${
+                    isOpen
+                      ? "w-6 -rotate-45"
+                      : "w-4 translate-y-[5px] translate-x-[2px]"
+                  }`}
+                />
+              </span>
+              {isOpen ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
       </nav>
 

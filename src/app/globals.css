@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme inline {
+:root {
   --color-bg: #0A0A0A;
   --color-bg-elevated: #111111;
   --color-bg-muted: #1A1A1A;
@@ -11,6 +11,32 @@
   --color-accent-dim: #99CC00;
   --color-border: #222222;
   --color-border-light: #333333;
+}
+
+[data-theme="light"] {
+  --color-bg: #FFFFFF;
+  --color-bg-elevated: #F7F7F5;
+  --color-bg-muted: #EFEFEA;
+  --color-fg: #0A0A0A;
+  --color-fg-muted: #555555;
+  --color-fg-dim: #888888;
+  --color-accent: #8A5A00;
+  --color-accent-dim: #A67C00;
+  --color-border: #E5E5E0;
+  --color-border-light: #D0D0CA;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-fg-dim: var(--color-fg-dim);
+  --color-accent: var(--color-accent);
+  --color-accent-dim: var(--color-accent-dim);
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
@@ -117,7 +143,7 @@ body {
 
 /* Text gradient */
 .text-gradient-accent {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #E8FF8A 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dim) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
