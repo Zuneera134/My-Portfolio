@@ -59,13 +59,13 @@ export default function Hero() {
           </h1>
         </div>
 
-        <div ref={role} className="mt-9 opacity-0">
+        <div ref={role} className="mt-11 opacity-0">
           <p className="text-[clamp(1.1rem,2vw,1.5rem)] font-mono text-fg-muted">
             CS Student @ COMSATS University — Full-Stack Developer in the making
           </p>
         </div>
 
-        <div ref={desc} className="mt-9 opacity-0">
+        <div ref={desc} className="mt-8 opacity-0">
           <p className="text-base md:text-lg font-light text-fg-muted max-w-xl leading-relaxed">
             I build clean, secure, full-stack web applications with React, Node.js
             and databases. Based in Mansehra, Pakistan — turning ideas into
@@ -73,7 +73,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div ref={actions} className="mt-16 flex flex-wrap gap-4 opacity-0">
+        <div ref={actions} className="mt-20 flex flex-wrap gap-5 opacity-0">
           <button
             onClick={() => go("#work")}
             className="btn btn-primary group"
@@ -102,7 +102,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div ref={stats} className="mt-16 flex flex-wrap gap-x-12 gap-y-6 opacity-0">
+        <div ref={stats} className="mt-20 flex flex-wrap gap-x-12 gap-y-6 opacity-0">
           {[
             { num: "7+", label: "Projects" },
             { num: "3", label: "Certifications" },
