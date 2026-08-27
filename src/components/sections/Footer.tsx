@@ -50,17 +50,17 @@ export default function Footer() {
     <footer
       id="contact"
       ref={sectionRef}
-      className="section-padding py-32 md:py-48"
+      className="section-padding py-16 md:py-24"
     >
-      <div className="h-line mb-16" />
+      <div className="h-line mb-10" />
 
-      <div className="mb-8">
+      <div className="mb-6">
         <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
           006 — Contact
         </span>
       </div>
 
-      <div ref={headlineRef} className="max-w-[90vw] md:max-w-[70vw] mb-16">
+      <div ref={headlineRef} className="max-w-[90vw] md:max-w-[70vw] mb-10">
         <h2 className="text-[clamp(2.5rem,8vw,9rem)] leading-[0.95] tracking-[-0.04em] font-light">
           Let&apos;s build
           <br />
@@ -72,7 +72,7 @@ export default function Footer() {
       </div>
 
       {/* Action buttons */}
-      <div ref={ctaRef} className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6 mb-8">
+      <div ref={ctaRef} className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4 mb-6">
         <a
           href={LINKEDIN}
           target="_blank"
@@ -136,7 +136,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <div className="text-2xl md:text-4xl font-light tracking-tight mb-24">
+      <div className="text-2xl md:text-4xl font-light tracking-tight mb-16">
         <a
           href={`mailto:${EMAIL}`}
           className="hover:text-accent transition-colors duration-300 inline-block"
@@ -148,7 +148,7 @@ export default function Footer() {
 
       <div
         ref={metaRef}
-        className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        className="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-6"
       >
         <div className="flex flex-col gap-2">
           <div className="text-sm font-light text-fg-muted">

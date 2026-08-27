@@ -25,15 +25,10 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee text="REACT · NODE · MY SQL · EXPRESS" speed={0.9} />
-        <div className="h-line section-padding" />
         <Introduction />
-        <div className="h-line section-padding" />
         <Projects />
-        <div className="h-line section-padding" />
         <Languages />
-        <div className="h-line section-padding" />
         <Skills />
-        <div className="h-line section-padding" />
         <Journey />
         <Footer />
       </main>

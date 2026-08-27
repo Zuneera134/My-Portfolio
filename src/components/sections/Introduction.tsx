@@ -75,7 +75,7 @@ export default function Introduction() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen flex flex-col justify-center section-padding py-32"
+      className="flex flex-col justify-center section-padding py-16 md:py-24"
     >
       <div className="max-w-[85vw] md:max-w-[70vw]">
         <div className="mb-4">
@@ -84,7 +84,7 @@ export default function Introduction() {
           </span>
         </div>
 
-        <h2 className="text-[clamp(2rem,5.5vw,5.5rem)] leading-[1.1] tracking-[-0.03em] mb-16">
+        <h2 className="text-[clamp(2rem,5.5vw,5.5rem)] leading-[1.1] tracking-[-0.03em] mb-10">
           {introWords.map((word, i) => (
             <span
               key={i}

@@ -54,8 +54,8 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="section-padding py-32 md:py-40">
-      <div className="mb-12">
+    <section id="skills" ref={sectionRef} className="section-padding py-16 md:py-24">
+      <div className="mb-8">
         <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
           Skills
         </span>

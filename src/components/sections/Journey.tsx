@@ -183,8 +183,8 @@ function Certifications() {
 
 export default function Journey() {
   return (
-    <section className="section-padding py-32 md:py-48">
-      <div className="flex flex-col gap-24 md:gap-32">
+    <section className="section-padding py-16 md:py-24">
+      <div className="flex flex-col gap-16 md:gap-24">
         <Experience />
         <Education />
         <Certifications />

@@ -81,12 +81,9 @@ function ProjectCard({ project }: { project: { number: string; title: string; su
 
 export default function Projects() {
   return (
-    <section id="work" className="section-padding py-32 md:py-48">
-      <div className="mb-16 md:mb-24">
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          Selected Work
-        </span>
-        <h2 className="mt-8 text-[clamp(2rem,4.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] font-light">
+    <section id="work" className="section-padding py-16 md:py-24">
+      <div className="mb-10 md:mb-12">
+        <h2 className="text-[clamp(2rem,4.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] font-light">
           Projects
         </h2>
       </div>
