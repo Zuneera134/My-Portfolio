@@ -15,22 +15,19 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useLayoutEffect(() => {
-    const saved = localStorage.getItem("theme") as Theme | null;
-    if (saved) {
-      document.documentElement.setAttribute("data-theme", saved);
-    }
-  }, []);
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
     localStorage.setItem("theme", next);
-    document.documentElement.setAttribute("data-theme", next);
   };
 
   return (
     <button
       onClick={toggle}
+      suppressHydrationWarning
       className="flex items-center gap-2 text-[11px] font-mono tracking-[0.2em] uppercase text-fg hover:text-accent transition-colors duration-300 border border-border rounded-full px-4 py-2"
       data-cursor="TOGGLE"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
