@@ -111,10 +111,10 @@ export default function Navigation() {
         <div className="section-padding flex items-center justify-between">
           <div
             ref={logoRef}
-            className="text-sm font-mono tracking-[0.2em] uppercase text-fg"
+            className="text-base font-mono tracking-[0.2em] uppercase text-fg"
             data-cursor="OPEN"
           >
-            Zuneera Tariq
+            My Portfolio
           </div>
 
           <div className="flex items-center gap-4">
@@ -123,7 +123,7 @@ export default function Navigation() {
             <button
               ref={menuBtnRef}
               onClick={toggleMenu}
-              className="flex items-center gap-3 text-sm font-mono tracking-[0.15em] uppercase text-fg hover:text-accent transition-colors duration-300"
+              className="flex items-center gap-3 text-base font-mono tracking-[0.15em] uppercase text-fg hover:text-accent transition-colors duration-300"
               data-cursor="MENU"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}

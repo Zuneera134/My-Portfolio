@@ -74,11 +74,11 @@ export default function Footer() {
     <footer id="contact" ref={sectionRef} className="mt-auto section-padding">
       <div className="section-inner">
         {/* Header */}
-        <div className="pt-24 md:pt-32">
+        <div className="pt-28 md:pt-36">
           <div className="section-eyebrow">Let&apos;s work together</div>
           <h2 className="section-title">Get in Touch</h2>
 
-          <div ref={headlineRef} className="mt-8 max-w-4xl">
+          <div ref={headlineRef} className="mt-10 max-w-4xl">
             <h2 className="text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.08] tracking-[-0.02em] font-display font-medium">
               Let&apos;s build
               <br />
@@ -91,11 +91,11 @@ export default function Footer() {
         </div>
 
         {/* Email line */}
-        <div className="mt-14 border-t border-border pt-8">
-          <div className="text-sm text-fg-muted font-light mb-2">Email me at</div>
+        <div className="mt-20 border-t border-border pt-10 md:pt-12">
+          <div className="text-sm text-fg-muted font-light mb-3">Email me at</div>
           <a
             href={`mailto:${EMAIL}`}
-            className="text-lg md:text-2xl font-display font-medium text-fg hover:text-accent transition-colors"
+            className="text-2xl md:text-3xl font-display font-medium text-fg hover:text-accent transition-colors"
             data-cursor="EMAIL"
           >
             {EMAIL}
@@ -103,7 +103,7 @@ export default function Footer() {
         </div>
 
         {/* Action buttons */}
-        <div ref={ctaRef} className="mt-14 flex flex-wrap gap-3 md:gap-4">
+        <div ref={ctaRef} className="mt-16 flex flex-wrap gap-3 md:gap-4">
           <a
             href={LINKEDIN}
             target="_blank"
@@ -160,7 +160,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           ref={metaRef}
-          className="mt-20 md:mt-24 flex flex-col md:flex-row md:items-center justify-between gap-8 py-10 border-t border-border"
+          className="mt-24 md:mt-28 flex flex-col md:flex-row md:items-center justify-between gap-8 py-12 border-t border-border"
         >
           <div className="flex flex-col gap-1.5">
             <div className="text-base font-semibold text-fg">Zuneera Tariq</div>
