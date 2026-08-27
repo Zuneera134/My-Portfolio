@@ -170,7 +170,7 @@ export default function Navigation() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-fg hover:text-accent transition-colors duration-300"
+                className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-fg hover:text-accent transition-colors duration-300 whitespace-nowrap"
                 style={{ perspective: "600px" }}
                 data-cursor="GO"
               >
