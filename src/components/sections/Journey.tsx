@@ -173,7 +173,7 @@ export default function Journey() {
   return (
     <div className="section section-padding">
       <div className="section-inner">
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-16">
           <Experience />
           <Education />
           <Certifications />

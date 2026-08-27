@@ -175,8 +175,8 @@ p {
 
 /* Section wrapper — consistent vertical rhythm */
 .section {
-  padding-top: clamp(5rem, 10vw, 8rem);
-  padding-bottom: clamp(5rem, 10vw, 8rem);
+  padding-top: clamp(4rem, 7vw, 5.5rem);
+  padding-bottom: clamp(4rem, 7vw, 5.5rem);
 }
 
 /* Consistent section container (max-width) */
