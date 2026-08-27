@@ -10,9 +10,10 @@ const languages = [
   "JavaScript",
   "Java",
   "Python",
+  "C#",
+  "C",
   "HTML",
   "CSS",
-  "C",
 ];
 
 export default function Languages() {
@@ -51,7 +52,7 @@ export default function Languages() {
           Programming languages I use to design, build and debug software.
         </p>
 
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
           {languages.map((lang, i) => (
             <div
               key={lang}

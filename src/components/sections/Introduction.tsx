@@ -80,12 +80,12 @@ export default function Introduction() {
       <div className="max-w-[85vw] md:max-w-[70vw]">
         <span className="section-eyebrow">Introduction</span>
 
-        <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.15] tracking-[-0.01em] mt-6">
+        <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.75rem)] leading-[1.12] tracking-[-0.02em] mt-6">
           {introWords.map((word, i) => (
             <span
               key={i}
               ref={(el) => { wordRefs.current[i] = el; }}
-              className={`${word.weight} inline-block mr-[0.25em]`}
+              className={`${word.weight} inline-block mr-[0.3em]`}
             >
               {word.text}
             </span>

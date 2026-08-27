@@ -154,13 +154,11 @@ function Certifications() {
             ref={(el) => { refs.current[i] = el; }}
             className="card flex flex-col"
           >
-            <div className="flex items-center justify-between gap-4">
-              <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-accent">
-                {cert.issuer}
-              </span>
-              <span className="text-fg-dim text-[10px] font-mono">{cert.year}</span>
+            <div className="flex items-start justify-between gap-4">
+              <span className="text-base font-semibold text-accent">{cert.issuer}</span>
+              <span className="text-fg-dim text-xs font-mono mt-1">{cert.year}</span>
             </div>
-            <h3 className="font-display text-lg font-medium mt-4">{cert.title}</h3>
+            <h3 className="font-display text-xl font-medium mt-3">{cert.title}</h3>
             <p className="text-fg-muted text-sm font-light mt-2">
               {cert.description}
             </p>

@@ -70,12 +70,12 @@ export default function Footer() {
         </div>
 
         {/* Action buttons */}
-        <div ref={ctaRef} className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4 mb-6 flex-wrap">
+        <div ref={ctaRef} className="mt-10 flex flex-wrap gap-3 mb-10">
           <a
             href={LINKEDIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors duration-300 text-sm font-medium"
+            className="btn btn-secondary group"
             data-cursor="CONNECT"
           >
             Get in Touch
@@ -98,7 +98,7 @@ export default function Footer() {
             href={LINKEDIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full bg-accent text-black hover:opacity-90 transition-opacity duration-300 text-sm font-medium"
+            className="btn btn-primary"
             data-cursor="HIRE"
           >
             Hire Me
@@ -106,7 +106,7 @@ export default function Footer() {
 
           <a
             href={`mailto:${EMAIL}`}
-            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors duration-300 text-sm font-medium"
+            className="btn btn-secondary"
             data-cursor="EMAIL"
           >
             Email
@@ -114,7 +114,7 @@ export default function Footer() {
 
           <a
             href="/resume.html"
-            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors duration-300 text-sm font-medium"
+            className="btn btn-secondary group"
             data-cursor="RESUME"
           >
             Resume
@@ -134,7 +134,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="text-2xl md:text-3xl font-display font-medium tracking-tight mb-16">
+        <div className="text-2xl md:text-4xl font-display font-medium tracking-tight mb-16">
           <a
             href={`mailto:${EMAIL}`}
             className="hover:text-accent transition-colors duration-300 inline-block"
@@ -146,18 +146,18 @@ export default function Footer() {
 
         <div
           ref={metaRef}
-          className="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="mt-4 flex flex-col md:flex-row md:items-center justify-between gap-6 pt-8 border-t border-border"
         >
-          <div className="flex flex-col gap-2">
-            <div className="text-sm font-light text-fg-muted">
-              Zuneera Tariq — CS Student @ CUI &apos;28
+          <div className="flex flex-col gap-1.5">
+            <div className="text-base font-medium text-fg">
+              Zuneera Tariq
             </div>
-            <div className="text-sm font-light text-fg-dim">
-              Mansehra, Pakistan
+            <div className="text-sm font-light text-fg-muted">
+              CS Student @ CUI &apos;28 · Mansehra, Pakistan
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             {[
               { label: "GitHub", href: GITHUB },
               { label: "LinkedIn", href: LINKEDIN },
@@ -167,7 +167,7 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim hover:text-accent transition-colors duration-300"
+                className="text-sm font-medium tracking-wide text-fg-muted hover:text-accent transition-colors duration-300"
                 data-cursor="OPEN"
               >
                 {link.label}
@@ -175,7 +175,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-fg-dim">
+          <div className="text-xs font-mono tracking-[0.2em] uppercase text-fg-dim">
             &copy; 2026 Zuneera Tariq
           </div>
         </div>

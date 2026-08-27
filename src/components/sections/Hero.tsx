@@ -73,10 +73,10 @@ export default function Hero() {
           </p>
         </div>
 
-        <div ref={actions} className="mt-10 flex flex-wrap gap-4 opacity-0">
+        <div ref={actions} className="mt-10 flex flex-wrap gap-3 opacity-0">
           <button
             onClick={() => go("#work")}
-            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full bg-accent text-black text-sm font-medium hover:opacity-90 transition-opacity"
+            className="btn btn-primary group"
             data-cursor="GO"
           >
             View Projects
@@ -88,31 +88,34 @@ export default function Hero() {
             href="https://www.linkedin.com/in/zuneera-tariq-a4b5012b5"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border text-sm text-fg hover:border-accent hover:text-accent transition-colors"
+            className="btn btn-secondary"
             data-cursor="GO"
           >
             Hire Me
           </a>
           <a
             href="mailto:zuratariq8@gmail.com"
-            className="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border text-sm text-fg hover:border-accent hover:text-accent transition-colors"
+            className="btn btn-secondary"
             data-cursor="GO"
           >
             Get in Touch
           </a>
         </div>
 
-        <div ref={stats} className="mt-14 flex flex-wrap gap-10 opacity-0">
+        <div ref={stats} className="mt-14 flex flex-wrap gap-x-12 gap-y-6 opacity-0">
           {[
-            { num: "5+", label: "Projects" },
+            { num: "7+", label: "Projects" },
             { num: "3", label: "Certifications" },
-            { num: "10+", label: "Technologies" },
+            { num: "12+", label: "Technologies" },
             { num: "2028", label: "Expected Graduation" },
-          ].map((s) => (
-            <div key={s.label}>
-              <div className="text-2xl font-display font-medium text-fg">{s.num}</div>
-              <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-fg-dim mt-1">
-                {s.label}
+          ].map((s, i) => (
+            <div key={s.label} className="flex items-center gap-10">
+              {i > 0 && <span className="hidden sm:block w-px h-8 bg-border" />}
+              <div>
+                <div className="text-2xl font-display font-medium text-fg">{s.num}</div>
+                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-fg-dim mt-1">
+                  {s.label}
+                </div>
               </div>
             </div>
           ))}
