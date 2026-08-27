@@ -24,11 +24,18 @@ export default function Navigation() {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
 
-    gsap.to(overlayRef.current, {
-      clipPath: "inset(0 0 0% 0)",
-      duration: 0.8,
-      ease: "power4.inOut",
-    });
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, {
+        clipPath: "inset(0 0 0% 0)",
+        duration: 0.8,
+        ease: "power4.inOut",
+        onStart: () => {
+          if (overlayRef.current) {
+            overlayRef.current.style.pointerEvents = "auto";
+          }
+        },
+      });
+    }
 
     menuItemsRef.current.forEach((item, i) => {
       if (!item) return;
@@ -48,15 +55,22 @@ export default function Navigation() {
   }, []);
 
   const closeMenu = useCallback(() => {
-    gsap.to(overlayRef.current, {
-      clipPath: "inset(0 0 100% 0)",
-      duration: 0.6,
-      ease: "power4.inOut",
-      onComplete: () => {
-        setIsOpen(false);
-        document.body.style.overflow = "";
-      },
-    });
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, {
+        clipPath: "inset(0 0 100% 0)",
+        duration: 0.6,
+        ease: "power4.inOut",
+        onStart: () => {
+          if (overlayRef.current) {
+            overlayRef.current.style.pointerEvents = "none";
+          }
+        },
+        onComplete: () => {
+          setIsOpen(false);
+          document.body.style.overflow = "";
+        },
+      });
+    }
   }, []);
 
   const toggleMenu = useCallback(() => {
@@ -137,50 +151,64 @@ export default function Navigation() {
       </nav>
 
       {/* Full-screen Menu Overlay */}
-      {isOpen && (
-        <div
-          ref={overlayRef}
-          className="fixed inset-0 z-[99] bg-bg flex items-center justify-center"
-          style={{ clipPath: "inset(0 0 100% 0)" }}
-        >
-          <div className="text-center">
-            <div className="mb-12 text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-              Navigation
-            </div>
-            <div className="flex flex-col items-center gap-6">
-              {navLinks.map((link, i) => (
-                <a
-                  key={link.label}
-                  ref={(el) => { menuItemsRef.current[i] = el; }}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-fg hover:text-accent transition-colors duration-300"
-                  style={{ perspective: "600px" }}
-                  data-cursor="GO"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-            <div className="mt-16 flex items-center gap-8 justify-center text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim">
-              <a href="#" className="hover:text-accent transition-colors" data-cursor="OPEN">
-                GitHub
+      <div
+        ref={overlayRef}
+        className="fixed inset-0 z-[99] bg-bg flex items-center justify-center"
+        style={{ clipPath: "inset(0 0 100% 0)", pointerEvents: "none" }}
+      >
+        <div className="text-center">
+          <div className="mb-12 text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
+            Navigation
+          </div>
+          <div className="flex flex-col items-center gap-6">
+            {navLinks.map((link, i) => (
+              <a
+                key={link.label}
+                ref={(el) => { menuItemsRef.current[i] = el; }}
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
+                className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-fg hover:text-accent transition-colors duration-300"
+                style={{ perspective: "600px" }}
+                data-cursor="GO"
+              >
+                {link.label}
               </a>
-              <span className="w-[1px] h-3 bg-border" />
-              <a href="#" className="hover:text-accent transition-colors" data-cursor="OPEN">
-                LinkedIn
-              </a>
-              <span className="w-[1px] h-3 bg-border" />
-              <a href="#" className="hover:text-accent transition-colors" data-cursor="OPEN">
-                Instagram
-              </a>
-            </div>
+            ))}
+          </div>
+          <div className="mt-16 flex items-center gap-8 justify-center text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim">
+            <a
+              href="https://github.com/Zuneera134"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+              data-cursor="OPEN"
+            >
+              GitHub
+            </a>
+            <span className="w-[1px] h-3 bg-border" />
+            <a
+              href="https://www.linkedin.com/in/zuneera-tariq-a4b5012b5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+              data-cursor="OPEN"
+            >
+              LinkedIn
+            </a>
+            <span className="w-[1px] h-3 bg-border" />
+            <a
+              href="mailto:zuratariq8@gmail.com"
+              className="hover:text-accent transition-colors"
+              data-cursor="OPEN"
+            >
+              Email
+            </a>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }
