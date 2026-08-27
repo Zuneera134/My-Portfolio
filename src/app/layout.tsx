@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,16 +21,6 @@ const playfair = localFont({
   variable: "--font-display",
   display: "swap",
 });
-
-function InlineScript({ html }: { html: string }) {
-  return (
-    <script
-      type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
-      suppressHydrationWarning
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
-  );
-}
 
 export const metadata: Metadata = {
   title: "Zuneera Tariq — CS Student & Full-Stack Developer in the Making",
@@ -57,12 +48,14 @@ export default function RootLayout({
 }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full" data-theme="dark" suppressHydrationWarning>
-      <head>
-        <InlineScript
-          html={`(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`}
-        />
-      </head>
       <body className={`${inter.variable} ${jetbrains.variable} ${playfair.variable} min-h-full`}>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,
+          }}
+        />
         {children}
       </body>
     </html>
