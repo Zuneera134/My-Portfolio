@@ -77,20 +77,20 @@ export default function Hero() {
           </span>
         </div>
 
-        <div ref={name} className="mt-8 opacity-0">
+        <div ref={name} className="mt-10 opacity-0">
           <h1 className="font-display text-[clamp(2.8rem,7vw,6rem)] leading-[1.05] font-medium tracking-tight">
             Zuneera{" "}
             <span className="text-gradient-accent">Tariq</span>
           </h1>
         </div>
 
-        <div ref={role} className="mt-6 opacity-0">
+        <div ref={role} className="mt-8 opacity-0">
           <p className="text-[clamp(1.1rem,2vw,1.5rem)] font-mono text-fg-muted">
             CS Student @ COMSATS University — Full-Stack Developer in the making
           </p>
         </div>
 
-        <div ref={desc} className="mt-6 opacity-0">
+        <div ref={desc} className="mt-8 opacity-0">
           <p className="text-base md:text-lg font-light text-fg-muted max-w-xl leading-relaxed">
             I build clean, secure, full-stack web applications with React, Node.js
             and databases. Based in Mansehra, Pakistan — turning ideas into
@@ -98,7 +98,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div ref={actions} className="mt-10 flex flex-wrap gap-3 opacity-0">
+        <div ref={actions} className="mt-12 flex flex-wrap gap-3 opacity-0">
           <button
             onClick={() => go("#work")}
             className="btn btn-primary group"
@@ -127,7 +127,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div ref={connect} className="mt-12 flex items-center gap-5 opacity-0">
+        <div ref={connect} className="mt-14 flex items-center gap-5 opacity-0">
           <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-fg-dim">
             Connect
           </span>
@@ -164,7 +164,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div ref={stats} className="mt-12 flex flex-wrap gap-x-12 gap-y-6 opacity-0">
+        <div ref={stats} className="mt-14 flex flex-wrap gap-x-12 gap-y-6 opacity-0">
           {[
             { num: "7+", label: "Projects" },
             { num: "3", label: "Certifications" },
