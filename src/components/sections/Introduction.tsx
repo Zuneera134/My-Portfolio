@@ -85,7 +85,7 @@ export default function Introduction() {
             <span
               key={i}
               ref={(el) => { wordRefs.current[i] = el; }}
-              className={`${word.weight} inline-block mr-[0.3em]`}
+              className={`${word.weight} inline-block mr-[0.45em]`}
             >
               {word.text}
             </span>
@@ -94,7 +94,7 @@ export default function Introduction() {
 
         <div ref={descRef} className="max-w-xl">
           <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light">
-            I build digital experiences that feel intentional — combining
+            I build digital experiences that feel intentional, combining
             solid engineering with thoughtful design. From concept to
             deployment, I care about clean architecture, secure systems,
             and the last 2% of polish.
@@ -103,7 +103,7 @@ export default function Introduction() {
             BS Computer Science student at COMSATS University Islamabad.
             Based in Mansehra, Pakistan. Currently exploring full-stack
             development, databases, and building real-world systems
-            — one project at a time.
+            one project at a time.
           </p>
         </div>
       </div>

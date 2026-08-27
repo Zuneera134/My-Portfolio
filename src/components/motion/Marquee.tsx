@@ -38,7 +38,7 @@ export default function Marquee({
     };
   }, [speed, direction]);
 
-  const repeatedText = `${text} \u2014 ${text} \u2014 ${text} \u2014 ${text} \u2014 `;
+  const repeatedText = `${text} \u00B7 ${text} \u00B7 ${text} \u00B7 ${text} \u00B7 `;
 
   return (
     <div

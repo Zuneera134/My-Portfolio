@@ -22,9 +22,9 @@ const playfair = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Zuneera Tariq — CS Student & Full-Stack Developer in the Making",
+  title: "Zuneera Tariq | Computer Science Portfolio",
   description:
-    "Personal portfolio of Zuneera Tariq — a BS Computer Science student at COMSATS University Islamabad, building full-stack web applications with React, Node.js, and databases.",
+    "Personal portfolio of Zuneera Tariq, a BS Computer Science student at COMSATS University Islamabad, building full-stack web applications with React, Node.js, and databases.",
   keywords: [
     "Zuneera Tariq",
     "portfolio",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "computer science student",
   ],
   openGraph: {
-    title: "Zuneera Tariq — Creative Developer",
+    title: "Zuneera Tariq | Creative Developer",
     description:
       "Building digital experiences that shouldn't feel ordinary.",
     type: "website",

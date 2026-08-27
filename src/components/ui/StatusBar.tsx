@@ -47,7 +47,7 @@ export default function StatusBar() {
       {/* Status info */}
       <div className="section-padding flex items-center justify-between py-3">
         <div className="text-[9px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          {currentSection} — {Math.round(scrollProgress * 100)}%
+          {currentSection} · {Math.round(scrollProgress * 100)}%
         </div>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

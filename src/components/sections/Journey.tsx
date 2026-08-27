@@ -12,7 +12,7 @@ const experience = [
     company: "Hayat Dev",
     period: "4-month internship",
     description:
-      "Worked on a complete College Management System — planning, developing, and delivering a real-world full-stack application with 8 role-based portals. Gained practical experience in React, Node.js, Express, and MySQL.",
+      "Worked on a complete College Management System, covering planning, developing, and delivering a real-world full-stack application with 8 role-based portals. Gained practical experience in React, Node.js, Express, and MySQL.",
   },
 ];
 
@@ -27,7 +27,7 @@ const education = [
     school: "The Peace Schools and Colleges",
     degree: "Intermediate / Secondary Education",
     period: "Completed",
-    grade: "Grade: A1 — 1066/1100 (97%)",
+    grade: "Grade: A1 (1066/1100, 97%)",
     highlight: "Top 20 Board Position Holder for outstanding academic performance",
   },
 ];
@@ -37,7 +37,7 @@ const certifications = [
     title: "Web Development Fundamentals",
     issuer: "IBM",
     year: "2026",
-    description: "Foundations of web development — HTML, CSS & JavaScript.",
+    description: "Foundations of web development: HTML, CSS & JavaScript.",
   },
   {
     title: "Data Science & Analytics",

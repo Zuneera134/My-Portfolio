@@ -189,7 +189,7 @@ p {
   padding-right: clamp(1.25rem, 5vw, 6rem);
 }
 
-/* Section wrapper — consistent vertical rhythm */
+/* Section wrapper - consistent vertical rhythm */
 .section {
   padding-top: clamp(4rem, 7vw, 5.5rem);
   padding-bottom: clamp(4rem, 7vw, 5.5rem);
@@ -202,7 +202,7 @@ p {
   width: 100%;
 }
 
-/* Eyebrow label above section title — mono, accent, with leading line */
+/* Eyebrow label above section title - mono, accent, with leading line */
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -222,7 +222,7 @@ p {
   background: var(--color-accent);
 }
 
-/* Consistent section title — serif, clear, uniform across all sections */
+/* Consistent section title - serif, clear, uniform across all sections */
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 5vw, 3.75rem);
@@ -234,7 +234,7 @@ p {
   margin-bottom: 14px;
 }
 
-/* Section subtitle — muted descriptive line */
+/* Section subtitle - muted descriptive line */
 .section-sub {
   font-size: 1rem;
   line-height: 1.75;

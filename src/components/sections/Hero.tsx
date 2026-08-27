@@ -6,13 +6,12 @@ import gsap from "gsap";
 export default function Hero() {
   const badge = useRef<HTMLDivElement>(null);
   const name = useRef<HTMLDivElement>(null);
-  const role = useRef<HTMLDivElement>(null);
   const desc = useRef<HTMLDivElement>(null);
   const actions = useRef<HTMLDivElement>(null);
   const stats = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const list = [badge, name, role, desc, actions, stats];
+    const list = [badge, name, desc, actions, stats];
     const tl = gsap.timeline({ delay: 0.2 });
     list.forEach((r, i) => {
       if (!r.current) return;
@@ -59,16 +58,10 @@ export default function Hero() {
           </h1>
         </div>
 
-        <div ref={role} className="mt-11 opacity-0">
-          <p className="text-[clamp(1.1rem,2vw,1.5rem)] font-mono text-fg-muted">
-            CS Student @ COMSATS University — Full-Stack Developer in the making
-          </p>
-        </div>
-
-        <div ref={desc} className="mt-8 opacity-0">
+        <div ref={desc} className="mt-12 opacity-0">
           <p className="text-base md:text-lg font-light text-fg-muted max-w-xl leading-relaxed">
             I build clean, secure, full-stack web applications with React, Node.js
-            and databases. Based in Mansehra, Pakistan — turning ideas into
+            and databases. Based in Mansehra, Pakistan. Turning ideas into
             polished, real-world systems one project at a time.
           </p>
         </div>

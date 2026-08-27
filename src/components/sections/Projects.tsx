@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -56,7 +56,7 @@ function ProjectCard({ project }: { project: { number: string; title: string; su
         {project.description}
       </p>
 
-      {/* Role / company — separated from tech stack */}
+      {/* Role / company - separated from tech stack */}
       <div className="mt-6 pt-5 border-t border-border flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
         <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-fg">

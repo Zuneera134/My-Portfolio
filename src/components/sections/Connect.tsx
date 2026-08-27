@@ -70,7 +70,7 @@ export default function Connect() {
         <div className="section-eyebrow">Let&apos;s connect</div>
         <h2 className="section-title">Connect with Me</h2>
         <p className="section-sub">
-          Reach out on your favorite platform — I&apos;d love to hear from you.
+          Reach out on your favorite platform and I&apos;d love to hear from you.
         </p>
 
         <div className="mt-12 flex flex-col md:flex-row gap-4 md:gap-5">
