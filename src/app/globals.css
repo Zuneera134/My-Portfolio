@@ -40,7 +40,7 @@
 
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
-  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
@@ -169,25 +169,75 @@ p {
 
 /* Section padding */
 .section-padding {
-  padding-left: clamp(1.5rem, 5vw, 6rem);
-  padding-right: clamp(1.5rem, 5vw, 6rem);
+  padding-left: clamp(1.25rem, 5vw, 6rem);
+  padding-right: clamp(1.25rem, 5vw, 6rem);
 }
 
-/* Consistent section title */
+/* Section wrapper — consistent vertical rhythm */
+.section {
+  padding-top: clamp(5rem, 10vw, 8rem);
+  padding-bottom: clamp(5rem, 10vw, 8rem);
+}
+
+/* Consistent section container (max-width) */
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Eyebrow label above section title — mono, accent, with leading line */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.section-eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* Consistent section title — serif, clear, uniform across all sections */
 .section-title {
-  font-size: clamp(2.25rem, 4.5vw, 4rem);
-  line-height: 1.15;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.12;
   letter-spacing: -0.01em;
+  font-weight: 500;
+  color: var(--color-fg);
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+/* Section subtitle — muted descriptive line */
+.section-sub {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-fg-muted);
+  max-width: 560px;
   font-weight: 300;
 }
 
-/* Eyebrow label above section title */
-.section-eyebrow {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--color-fg-dim);
+/* Reusable card base */
+.card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: border-color 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+}
+
+.card:hover {
+  border-color: var(--color-border-light);
 }
 
 /* Clip reveal animation */

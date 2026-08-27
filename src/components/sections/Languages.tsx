@@ -16,7 +16,6 @@ const languages = [
 ];
 
 export default function Languages() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export default function Languages() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: item,
-            start: "top 90%",
+            start: "top 92%",
           },
         }
       );
@@ -44,22 +43,26 @@ export default function Languages() {
   }, []);
 
   return (
-    <section id="languages" ref={sectionRef} className="section-padding py-16 md:py-24">
-      <div className="mb-8">
-        <div className="section-eyebrow mb-4">What I code in</div>
+    <section id="languages" className="section section-padding">
+      <div className="section-inner">
+        <div className="section-eyebrow">What I code in</div>
         <h2 className="section-title">Languages</h2>
-      </div>
+        <p className="section-sub">
+          Programming languages I use to design, build and debug software.
+        </p>
 
-      <div className="flex flex-wrap gap-3">
-        {languages.map((lang, i) => (
-          <div
-            key={lang}
-            ref={(el) => { itemRefs.current[i] = el; }}
-            className="px-6 py-4 border border-border hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors duration-300 rounded-sm text-lg md:text-xl font-light"
-          >
-            {lang}
-          </div>
-        ))}
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {languages.map((lang, i) => (
+            <div
+              key={lang}
+              ref={(el) => { itemRefs.current[i] = el; }}
+              className="card group flex flex-col items-center justify-center gap-3 py-8 hover:border-accent transition-colors"
+            >
+              <span className="w-8 h-8 rounded-full border border-border group-hover:border-accent group-hover:bg-accent/10 transition-colors" />
+              <span className="text-sm font-medium text-fg">{lang}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

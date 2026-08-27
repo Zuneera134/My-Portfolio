@@ -26,7 +26,6 @@ const skillGroups = [
 ];
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Skills() {
       if (!group) return;
       gsap.fromTo(
         group,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
@@ -42,7 +41,7 @@ export default function Skills() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: group,
-            start: "top 85%",
+            start: "top 88%",
           },
         }
       );
@@ -54,27 +53,35 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="section-padding py-16 md:py-24">
-      <div className="mb-8">
-        <div className="section-eyebrow mb-4">What I work with</div>
+    <section id="skills" className="section section-padding">
+      <div className="section-inner">
+        <div className="section-eyebrow">What I work with</div>
         <h2 className="section-title">Skills</h2>
-      </div>
+        <p className="section-sub">
+          The technologies and concepts powering the products I build.
+        </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {skillGroups.map((group, i) => (
-          <div key={group.category} ref={(el) => { groupRefs.current[i] = el; }}>
-            <div className="text-sm font-mono tracking-[0.2em] uppercase text-fg-dim mb-5">
-              {group.category}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {skillGroups.map((group, i) => (
+            <div
+              key={group.category}
+              ref={(el) => { groupRefs.current[i] = el; }}
+              className="card"
+            >
+              <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-accent">
+                {group.category}
+              </div>
+              <ul className="mt-5 space-y-3">
+                {group.items.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[15px] text-fg font-light">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent opacity-70 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-2">
-              {group.items.map((item) => (
-                <li key={item} className="text-lg md:text-xl font-light text-fg">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

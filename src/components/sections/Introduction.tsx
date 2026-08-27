@@ -78,13 +78,9 @@ export default function Introduction() {
       className="flex flex-col justify-center section-padding py-16 md:py-24"
     >
       <div className="max-w-[85vw] md:max-w-[70vw]">
-        <div className="mb-4">
-          <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-            001 — Introduction
-          </span>
-        </div>
+        <span className="section-eyebrow">Introduction</span>
 
-        <h2 className="text-[clamp(2rem,4.5vw,4rem)] leading-[1.15] tracking-[-0.01em] mb-10">
+        <h2 className="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[1.15] tracking-[-0.01em] mt-6">
           {introWords.map((word, i) => (
             <span
               key={i}

@@ -50,134 +50,134 @@ export default function Footer() {
     <footer
       id="contact"
       ref={sectionRef}
-      className="section-padding py-16 md:py-24"
+      className="section section-padding"
     >
-      <div className="h-line mb-10" />
+      <div className="section-inner">
+        <div className="h-line mb-10" />
 
-      <div className="mb-10">
-        <div className="section-eyebrow mb-4">Let&apos;s work together</div>
+        <div className="section-eyebrow">Let&apos;s work together</div>
         <h2 className="section-title">Get in Touch</h2>
-      </div>
 
-      <div ref={headlineRef} className="max-w-[90vw] md:max-w-[70vw] mb-10">
-        <h2 className="text-[clamp(2rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.03em] font-light">
-          Let&apos;s build
-          <br />
-          something{" "}
-          <span className="text-gradient-accent">great</span>
-          <br />
-          together.
-        </h2>
-      </div>
-
-      {/* Action buttons */}
-      <div ref={ctaRef} className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4 mb-6">
-        <a
-          href={LINKEDIN}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-4 px-8 py-4 border border-border hover:border-accent hover:bg-accent hover:text-black transition-colors duration-300 text-lg font-light"
-          data-cursor="CONNECT"
-        >
-          Get in Touch
-          <svg
-            className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M7 17L17 7M17 7H7M17 7v10"
-            />
-          </svg>
-        </a>
-
-        <a
-          href={LINKEDIN}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-4 px-8 py-4 bg-accent text-black hover:opacity-90 transition-opacity duration-300 text-lg font-light font-mono"
-          data-cursor="HIRE"
-        >
-          Hire Me
-        </a>
-
-        <a
-          href={`mailto:${EMAIL}`}
-          className="group inline-flex items-center gap-4 px-8 py-4 border border-border hover:border-accent transition-colors duration-300 text-lg font-light"
-          data-cursor="EMAIL"
-        >
-          Email
-        </a>
-
-        <a
-          href="/resume.html"
-          className="group inline-flex items-center gap-4 px-8 py-4 border border-border hover:border-accent transition-colors duration-300 text-lg font-light"
-          data-cursor="RESUME"
-        >
-          Resume
-          <svg
-            className="w-5 h-5 transition-transform duration-500 group-hover:translate-y-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
-            />
-          </svg>
-        </a>
-      </div>
-
-      <div className="text-2xl md:text-4xl font-light tracking-tight mb-16">
-        <a
-          href={`mailto:${EMAIL}`}
-          className="hover:text-accent transition-colors duration-300 inline-block"
-          data-cursor="EMAIL"
-        >
-          {EMAIL}
-        </a>
-      </div>
-
-      <div
-        ref={metaRef}
-        className="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-6"
-      >
-        <div className="flex flex-col gap-2">
-          <div className="text-sm font-light text-fg-muted">
-            Zuneera Tariq — CS Student @ CUI &apos;28
-          </div>
-          <div className="text-sm font-light text-fg-dim">
-            Mansehra, Pakistan
-          </div>
+        <div ref={headlineRef} className="max-w-[90vw] md:max-w-[70vw] my-8">
+          <h2 className="text-[clamp(2rem,5vw,4.5rem)] leading-[1.05] tracking-[-0.03em] font-display font-medium">
+            Let&apos;s build
+            <br />
+            something{" "}
+            <span className="text-gradient-accent">great</span>
+            <br />
+            together.
+          </h2>
         </div>
 
-        <div className="flex items-center gap-6">
-          {[
-            { label: "GitHub", href: GITHUB },
-            { label: "LinkedIn", href: LINKEDIN },
-          ].map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim hover:text-accent transition-colors duration-300"
-              data-cursor="OPEN"
+        {/* Action buttons */}
+        <div ref={ctaRef} className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4 mb-6 flex-wrap">
+          <a
+            href={LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors duration-300 text-sm font-medium"
+            data-cursor="CONNECT"
+          >
+            Get in Touch
+            <svg
+              className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
             >
-              {link.label}
-            </a>
-          ))}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+
+          <a
+            href={LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full bg-accent text-black hover:opacity-90 transition-opacity duration-300 text-sm font-medium"
+            data-cursor="HIRE"
+          >
+            Hire Me
+          </a>
+
+          <a
+            href={`mailto:${EMAIL}`}
+            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors duration-300 text-sm font-medium"
+            data-cursor="EMAIL"
+          >
+            Email
+          </a>
+
+          <a
+            href="/resume.html"
+            className="group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-border hover:border-accent hover:text-accent transition-colors duration-300 text-sm font-medium"
+            data-cursor="RESUME"
+          >
+            Resume
+            <svg
+              className="w-4 h-4 transition-transform duration-500 group-hover:translate-y-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
+              />
+            </svg>
+          </a>
         </div>
 
-        <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-fg-dim">
-          &copy; 2026 Zuneera Tariq
+        <div className="text-2xl md:text-3xl font-display font-medium tracking-tight mb-16">
+          <a
+            href={`mailto:${EMAIL}`}
+            className="hover:text-accent transition-colors duration-300 inline-block"
+            data-cursor="EMAIL"
+          >
+            {EMAIL}
+          </a>
+        </div>
+
+        <div
+          ref={metaRef}
+          className="mt-4 flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div className="flex flex-col gap-2">
+            <div className="text-sm font-light text-fg-muted">
+              Zuneera Tariq — CS Student @ CUI &apos;28
+            </div>
+            <div className="text-sm font-light text-fg-dim">
+              Mansehra, Pakistan
+            </div>
+          </div>
+
+          <div className="flex items-center gap-6">
+            {[
+              { label: "GitHub", href: GITHUB },
+              { label: "LinkedIn", href: LINKEDIN },
+            ].map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim hover:text-accent transition-colors duration-300"
+                data-cursor="OPEN"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-fg-dim">
+            &copy; 2026 Zuneera Tariq
+          </div>
         </div>
       </div>
     </footer>

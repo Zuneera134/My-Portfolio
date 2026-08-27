@@ -67,7 +67,7 @@ function useAnimate(refs: React.MutableRefObject<(HTMLDivElement | null)[]>) {
           ease: "power3.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
+            start: "top 88%",
           },
         }
       );
@@ -83,22 +83,19 @@ function Experience() {
   useAnimate(refs);
 
   return (
-    <div id="experience" className="pt-0">
-      <div className="mb-10">
-        <div className="section-eyebrow mb-4">Where I&apos;ve worked</div>
-        <h2 className="section-title">Experience</h2>
-      </div>
-      <div className="border-l-2 border-border pl-8 relative">
-        <div className="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-accent" />
-        <div ref={(el) => { refs.current[0] = el; }}>
-          <div className="text-fg-dim text-[10px] font-mono tracking-[0.2em] uppercase mb-2">
-            {experience[0].period}
+    <div id="experience" className="scroll-mt-24">
+      <div className="section-eyebrow">Where I&apos;ve worked</div>
+      <h2 className="section-title">Experience</h2>
+      <div className="mt-8 flex flex-col gap-6">
+        <div ref={(el) => { refs.current[0] = el; }} className="card">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <h3 className="font-display text-xl md:text-2xl font-medium">{experience[0].role}</h3>
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-fg-dim">
+              {experience[0].period}
+            </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-light">{experience[0].role}</h3>
-          <div className="text-accent text-base mt-1">
-            {experience[0].company}
-          </div>
-          <p className="text-fg-muted font-light mt-4 leading-relaxed max-w-2xl">
+          <div className="text-accent text-sm mt-1">{experience[0].company}</div>
+          <p className="text-fg-muted font-light mt-4 leading-relaxed">
             {experience[0].description}
           </p>
         </div>
@@ -112,20 +109,18 @@ function Education() {
   useAnimate(refs);
 
   return (
-    <div id="education" className="pt-0">
-      <div className="mb-10">
-        <div className="section-eyebrow mb-4">My academic background</div>
-        <h2 className="section-title">Education</h2>
-      </div>
-      <div className="flex flex-col gap-8">
+    <div id="education" className="scroll-mt-24">
+      <div className="section-eyebrow">My academic background</div>
+      <h2 className="section-title">Education</h2>
+      <div className="mt-8 flex flex-col gap-6">
         {education.map((edu, i) => (
           <div
             key={edu.school}
             ref={(el) => { refs.current[i] = el; }}
-            className="border border-border rounded-sm p-6 hover:border-accent/40 transition-colors duration-300"
+            className="card"
           >
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
-              <h3 className="text-lg md:text-xl font-light">{edu.school}</h3>
+              <h3 className="font-display text-lg md:text-xl font-medium">{edu.school}</h3>
               <span className="text-fg-dim text-[10px] font-mono tracking-[0.2em] whitespace-nowrap">
                 {edu.period}
               </span>
@@ -149,26 +144,24 @@ function Certifications() {
   useAnimate(refs);
 
   return (
-    <div id="certifications" className="pt-0">
-      <div className="mb-10">
-        <div className="section-eyebrow mb-4">Continuous learning</div>
-        <h2 className="section-title">Certifications</h2>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div id="certifications" className="scroll-mt-24">
+      <div className="section-eyebrow">Continuous learning</div>
+      <h2 className="section-title">Certifications</h2>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         {certifications.map((cert, i) => (
           <div
             key={cert.title}
             ref={(el) => { refs.current[i] = el; }}
-            className="border border-border rounded-sm p-6 hover:border-accent/40 transition-colors duration-300"
+            className="card flex flex-col"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div className="text-fg-dim text-[10px] font-mono tracking-[0.2em]">
-                {cert.year}
-              </div>
+            <div className="flex items-center justify-between gap-4">
+              <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-accent">
+                {cert.issuer}
+              </span>
+              <span className="text-fg-dim text-[10px] font-mono">{cert.year}</span>
             </div>
-            <h3 className="text-lg font-light mt-3">{cert.title}</h3>
-            <div className="text-accent text-sm mt-1">{cert.issuer}</div>
-            <p className="text-fg-muted text-sm font-light mt-3">
+            <h3 className="font-display text-lg font-medium mt-4">{cert.title}</h3>
+            <p className="text-fg-muted text-sm font-light mt-2">
               {cert.description}
             </p>
           </div>
@@ -180,12 +173,14 @@ function Certifications() {
 
 export default function Journey() {
   return (
-    <section className="section-padding py-16 md:py-24">
-      <div className="flex flex-col gap-16 md:gap-24">
-        <Experience />
-        <Education />
-        <Certifications />
+    <div className="section section-padding">
+      <div className="section-inner">
+        <div className="flex flex-col gap-20">
+          <Experience />
+          <Education />
+          <Certifications />
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

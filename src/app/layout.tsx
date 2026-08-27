@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,6 +12,12 @@ const inter = Inter({
 const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = localFont({
+  src: "./fonts/playfair-display-latin.woff2",
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -55,7 +62,7 @@ export default function RootLayout({
           html={`(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`}
         />
       </head>
-      <body className={`${inter.variable} ${jetbrains.variable} min-h-full`}>
+      <body className={`${inter.variable} ${jetbrains.variable} ${playfair.variable} min-h-full`}>
         {children}
       </body>
     </html>
