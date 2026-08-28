@@ -45,6 +45,23 @@ export default function Connect() {
   const formRef = useRef<HTMLFormElement>(null);
   const [sent, setSent] = useState(false);
 
+  const downloadResume = async () => {
+    try {
+      const res = await fetch("/resume.pdf");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Zuneera_Tariq_Resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      window.open("/resume.pdf", "_blank");
+    }
+  };
+
   useEffect(() => {
     const tweens = itemRefs.current
       .filter((item): item is HTMLAnchorElement => !!item)
@@ -210,9 +227,9 @@ export default function Connect() {
                 Grab a copy of my CV for a quick overview of my experience and
                 skills.
               </p>
-              <a
-                href="/resume.pdf"
-                download="Zuneera_Tariq_Resume.pdf"
+              <button
+                type="button"
+                onClick={downloadResume}
                 className="btn btn-secondary group mt-4 w-fit"
                 data-cursor="RESUME"
               >
@@ -230,7 +247,7 @@ export default function Connect() {
                     d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
                   />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>
