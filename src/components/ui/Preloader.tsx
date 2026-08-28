@@ -6,7 +6,14 @@ export default function Preloader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 2000);
+    let alreadySeen = false;
+    try {
+      alreadySeen = sessionStorage.getItem("zt-preloaded") === "1";
+      sessionStorage.setItem("zt-preloaded", "1");
+    } catch {
+      /* ignore storage errors */
+    }
+    const timer = setTimeout(() => setVisible(false), alreadySeen ? 250 : 1800);
     return () => clearTimeout(timer);
   }, []);
 

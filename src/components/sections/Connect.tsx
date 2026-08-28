@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, FormEvent } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -42,27 +42,49 @@ const LINKS = [
 
 export default function Connect() {
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sent, setSent] = useState(false);
 
   useEffect(() => {
-    itemRefs.current.forEach((item) => {
-      if (!item) return;
-      gsap.fromTo(
-        item,
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          scrollTrigger: { trigger: item, start: "top 92%" },
-        }
+    const tweens = itemRefs.current
+      .filter((item): item is HTMLAnchorElement => !!item)
+      .map((item) =>
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+            scrollTrigger: { trigger: item, start: "top 92%", once: true },
+          }
+        )
       );
-    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
     };
   }, []);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = data.get("name")?.toString().trim() ?? "";
+    const from = data.get("email")?.toString().trim() ?? "";
+    const message = data.get("message")?.toString().trim() ?? "";
+
+    const subject = `Portfolio message from ${name}`;
+    const body = `Hi Zuneera,\n\n${message}\n\n- ${name} (${from})`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      EMAIL
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    setSent(true);
+  }
 
   return (
     <section id="connect" className="section section-padding">
@@ -73,34 +95,144 @@ export default function Connect() {
           Reach out on your favorite platform and I&apos;d love to hear from you.
         </p>
 
-        <div className="mt-12 flex flex-col md:flex-row gap-4 md:gap-5">
-          {LINKS.map((link, i) => (
-            <a
-              key={link.name}
-              ref={(el) => { itemRefs.current[i] = el; }}
-              href={link.href}
-              target={link.href.startsWith("mailto") ? undefined : "_blank"}
-              rel={
-                link.href.startsWith("mailto")
-                  ? undefined
-                  : "noopener noreferrer"
-              }
-              className="card group flex-1 flex items-center gap-4 hover:border-accent hover:bg-accent/5 transition-colors"
-              data-cursor="OPEN"
-            >
-              <span className="w-12 h-12 shrink-0 rounded-full border border-border group-hover:border-accent group-hover:bg-accent/10 flex items-center justify-center text-fg-muted group-hover:text-accent transition-colors">
-                <span className="w-5 h-5">{link.icon}</span>
-              </span>
-              <span className="flex flex-col">
-                <span className="text-base font-semibold text-fg">
-                  {link.name}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Contact form */}
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="card p-6 md:p-8 flex flex-col gap-5"
+          >
+            <div>
+              <h3 className="font-display text-lg font-medium">Send me a message</h3>
+              <p className="text-sm text-fg-muted font-light mt-1">
+                Fill this in and it will open Gmail, pre-filled.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-5">
+              <label className="flex flex-1 flex-col gap-1.5 text-xs font-mono tracking-[0.15em] uppercase text-fg-dim">
+                Name
+                <input
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Your name"
+                  className="mt-1 h-11 px-4! rounded-lg border border-border bg-bg-muted text-fg text-sm font-light placeholder:text-fg-dim/50 focus:outline-none focus:border-accent transition-colors"
+                />
+              </label>
+              <label className="flex flex-1 flex-col gap-1.5 text-xs font-mono tracking-[0.15em] uppercase text-fg-dim">
+                Email
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                  className="mt-1 h-11 px-4! rounded-lg border border-border bg-bg-muted text-fg text-sm font-light placeholder:text-fg-dim/50 focus:outline-none focus:border-accent transition-colors"
+                />
+              </label>
+            </div>
+
+            <label className="flex flex-col gap-1.5 text-xs font-mono tracking-[0.15em] uppercase text-fg-dim">
+              Message
+              <textarea
+                name="message"
+                required
+                rows={5}
+                placeholder="Tell me about your project or opportunity..."
+                className="mt-1 px-4! py-3! rounded-lg border border-border bg-bg-muted text-fg text-sm font-light placeholder:text-fg-dim/50 focus:outline-none focus:border-accent transition-colors resize-none"
+              />
+            </label>
+
+            <div className="flex items-center gap-3">
+              <button
+                type="submit"
+                className="btn btn-primary group"
+                data-cursor=""
+              >
+                Send Message
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13 5l7 7-7 7M5 12h15"
+                  />
+                </svg>
+              </button>
+              {sent && (
+                <span className="text-sm text-accent font-light">
+                  Opening Gmail...
                 </span>
-                <span className="text-sm font-light text-fg-muted break-all">
-                  {link.handle}
+              )}
+            </div>
+          </form>
+
+          {/* Social links */}
+          <div className="flex flex-col gap-4">
+            {LINKS.map((link, i) => (
+              <a
+                key={link.name}
+                ref={(el) => { itemRefs.current[i] = el; }}
+                href={link.href}
+                target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                rel={
+                  link.href.startsWith("mailto")
+                    ? undefined
+                    : "noopener noreferrer"
+                }
+                className="card group flex-1 flex items-center gap-4 hover:border-accent hover:bg-accent/5 transition-colors"
+                data-cursor=""
+              >
+                <span className="w-12 h-12 shrink-0 rounded-full border border-border group-hover:border-accent group-hover:bg-accent/10 flex items-center justify-center text-fg-muted group-hover:text-accent transition-colors">
+                  <span className="w-5 h-5">{link.icon}</span>
                 </span>
-              </span>
-            </a>
-          ))}
+                <span className="flex flex-col">
+                  <span className="text-base font-semibold text-fg">
+                    {link.name}
+                  </span>
+                  <span className="text-sm font-light text-fg-muted break-all">
+                    {link.handle}
+                  </span>
+                </span>
+              </a>
+            ))}
+
+            <div className="card flex-1 flex flex-col justify-center p-6">
+              <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-accent">
+                Want my resume?
+              </div>
+              <p className="text-sm text-fg-muted font-light mt-2">
+                Grab a copy of my CV for a quick overview of my experience and
+                skills.
+              </p>
+              <a
+                href="/resume.pdf"
+                download="Zuneera_Tariq_Resume.pdf"
+                className="btn btn-secondary group mt-4 w-fit"
+                data-cursor="RESUME"
+              >
+                Download Resume
+                <svg
+                  className="w-4 h-4 transition-transform duration-500 group-hover:translate-y-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

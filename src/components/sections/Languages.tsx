@@ -56,26 +56,31 @@ export default function Languages() {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    itemRefs.current.forEach((item) => {
-      if (!item) return;
-      gsap.fromTo(
-        item,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 92%",
-          },
-        }
+    const tweens = itemRefs.current
+      .filter((item): item is HTMLDivElement => !!item)
+      .map((item) =>
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 92%",
+              once: true,
+            },
+          }
+        )
       );
-    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
     };
   }, []);
 

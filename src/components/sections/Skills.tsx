@@ -9,19 +9,19 @@ gsap.registerPlugin(ScrollTrigger);
 const skillGroups = [
   {
     category: "Frontend",
-    items: ["React.js", "Responsive Design", "UI Development"],
+    items: ["React.js", "Next.js", "Responsive Design", "UI Development"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express.js", "REST APIs", "Authentication"],
+    items: ["Node.js", "Express.js", "REST APIs", "Authentication", "Linux"],
   },
   {
     category: "Databases",
-    items: ["MySQL", "MongoDB", "Database Design"],
+    items: ["MySQL", "MongoDB", "Mongoose", "Database Design"],
   },
   {
     category: "Concepts",
-    items: ["Data Structures", "OOP", "Problem Solving", "Git & GitHub"],
+    items: ["Data Structures", "OOP", "Problem Solving"],
   },
 ];
 
@@ -29,26 +29,31 @@ export default function Skills() {
   const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    groupRefs.current.forEach((group) => {
-      if (!group) return;
-      gsap.fromTo(
-        group,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: group,
-            start: "top 88%",
-          },
-        }
+    const tweens = groupRefs.current
+      .filter((group): group is HTMLDivElement => !!group)
+      .map((group) =>
+        gsap.fromTo(
+          group,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 88%",
+              once: true,
+            },
+          }
+        )
       );
-    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
     };
   }, []);
 

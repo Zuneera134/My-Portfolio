@@ -10,22 +10,23 @@ export default function About() {
   const leftRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (leftRef.current) {
-      gsap.fromTo(
-        leftRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: { trigger: leftRef.current, start: "top 85%" },
-        }
-      );
-    }
+    const el = leftRef.current;
+    if (!el) return;
+    const tween = gsap.fromTo(
+      el,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 85%", once: true },
+      }
+    );
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tween.scrollTrigger?.kill();
+      tween.kill();
     };
   }, []);
 
@@ -37,25 +38,26 @@ export default function About() {
 
         <div ref={leftRef} className="mt-12 max-w-3xl flex flex-col">
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light">
-              I am Zuneera Tariq, a Computer Science undergraduate at COMSATS
-              University Islamabad, Abbottabad Campus. I focus on building
-              reliable, secure, and thoughtfully designed software across the
-              full stack.
+              I&apos;m Zuneera Tariq, a CS student at COMSATS University
+              Islamabad (Abbottabad Campus) who builds full-stack products:
+              React and Node.js on the surface, solid database and system
+              design underneath.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
-              My work spans front-end development with React, back-end systems
-              with Node.js and Express, and database design with MySQL and
-              MongoDB. I care about clean architecture, clear code, and the
-              small details that make a product feel professional.
+              I&apos;ve shipped real systems from planning to production,
+              including a College Management System and a pizza shop platform
+              with a full CI/CD pipeline. I sweat the details most people
+              skip, and I care how things work when nobody is watching.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
-              I am currently exploring new technologies and building real-world
-              projects to grow as a developer, based in Mansehra, Pakistan.
+              Right now I&apos;m growing as a full-stack developer in Mansehra,
+              Pakistan, and looking for internships where I can add real value.
             </p>
 
             <a
-              href="/resume.html"
-              className="btn btn-secondary group mt-10 w-fit"
+              href="/resume.pdf"
+              download="Zuneera_Tariq_Resume.pdf"
+              className="btn btn-secondary group mt-10 w-fit mb-8!"
               data-cursor="RESUME"
             >
               Download Resume

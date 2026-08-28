@@ -3,16 +3,16 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "@/data/projects";
-
+import { projects, GITHUB_URL } from "@/data/projects";
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectCard({ project }: { project: { number: string; title: string; subtitle: string; description: string; tech: string[]; role: string; year: string; color: string } }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
+function useReveal<T extends HTMLElement>(start = "top 88%") {
+  const ref = useRef<T>(null);
   useEffect(() => {
-    gsap.fromTo(
-      cardRef.current,
+    const el = ref.current;
+    if (!el) return;
+    const tween = gsap.fromTo(
+      el,
       { opacity: 0, y: 40 },
       {
         opacity: 1,
@@ -20,60 +20,77 @@ function ProjectCard({ project }: { project: { number: string; title: string; su
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 88%",
+          trigger: el,
+          start,
+          once: true,
         },
       }
     );
-  }, []);
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, [start]);
+  return ref;
+}
 
+type CardProject = {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  tech: string[];
+  role: string;
+  year: string;
+  color: string;
+  link: string;
+  impact?: string[];
+};
+
+function ProjectCard({ project }: { project: CardProject }) {
+  const ref = useReveal<HTMLDivElement>();
   return (
     <div
-      ref={cardRef}
-      className="card group relative flex flex-col overflow-hidden"
+      ref={ref}
+      className="card group relative flex flex-col overflow-hidden hover:border-t-accent transition-colors"
     >
-      {/* Top accent line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-[2px] group-hover:h-full group-hover:opacity-[0.04] transition-all duration-500"
-        style={{ background: "var(--color-accent)" }}
-      />
-
-      <div className="flex items-center justify-between gap-4">
-        <div className="text-[10px] font-mono tracking-[0.2em] uppercase text-fg-dim">
-          Project {project.number}
-        </div>
-        <div className="text-[10px] font-mono tracking-[0.2em] text-fg-dim whitespace-nowrap">
+      <div className="flex-1 flex flex-col p-6">
+        <div className="text-[11px] font-mono tracking-wider text-fg-dim">
           {project.year}
         </div>
-      </div>
 
-      <h3 className="mt-5 font-display text-2xl md:text-[1.75rem] leading-snug font-medium group-hover:text-accent transition-colors">
-        {project.title}
-      </h3>
-      <div className="text-sm text-fg-muted mt-1.5 font-light">{project.subtitle}</div>
+        <h3 className="mt-3 font-display text-xl md:text-2xl leading-tight font-medium group-hover:text-accent transition-colors">
+          {project.title}
+        </h3>
 
-      <p className="mt-4 text-sm text-fg-muted font-light leading-relaxed">
-        {project.description}
-      </p>
+        <p className="mt-3 text-sm text-fg-muted font-light leading-relaxed">
+          {project.description}
+        </p>
 
-      {/* Role / company - separated from tech stack */}
-      <div className="mt-6 pt-5 border-t border-border flex items-center gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-        <span className="text-[11px] font-mono tracking-[0.15em] uppercase text-fg">
-          {project.role}
-        </span>
-      </div>
+        {/* Tech tags */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="text-[11px] font-mono tracking-wider px-2.5 py-1 rounded-md border border-border bg-bg-muted text-fg-muted"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
 
-      {/* Tech stack */}
-      <div className="mt-5 flex flex-wrap gap-2">
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="text-[11px] font-mono tracking-wider px-3 py-1.5 rounded-full border border-border bg-bg-muted text-fg-muted"
+        {/* CTA */}
+        <div className="mt-auto pt-6">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.1em] uppercase text-accent hover:underline"
+            data-cursor=""
           >
-            {t}
-          </span>
-        ))}
+            View on GitHub →
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -90,7 +107,19 @@ export default function Projects() {
           my CS studies and internship.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-10 flex justify-end">
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] font-mono tracking-[0.15em] uppercase text-accent hover:underline"
+            data-cursor=""
+          >
+            view all on GitHub →
+          </a>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <ProjectCard key={project.number} project={project} />
           ))}

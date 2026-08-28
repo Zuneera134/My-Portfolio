@@ -1,11 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const EMAIL = "zuratariq8@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/zuneera-tariq-a4b5012b5";
 const GITHUB = "https://github.com/Zuneera134";
@@ -35,50 +29,15 @@ function MailIcon({ className }: { className?: string }) {
 }
 
 export default function Footer() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const metaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const els = [
-      { el: headlineRef.current, y: 60 },
-      { el: ctaRef.current, y: 40 },
-      { el: metaRef.current, y: 0 },
-    ];
-
-    els.forEach(({ el, y }) => {
-      if (!el) return;
-      gsap.fromTo(
-        el,
-        { opacity: 0, y },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          },
-        }
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
   return (
-    <footer id="contact" ref={sectionRef} className="mt-auto section-padding">
+    <footer id="contact" className="mt-auto section-padding">
       <div className="section-inner">
         {/* Header */}
-        <div className="pt-28 md:pt-36">
+        <div className="pt-6! md:pt-8!">
           <div className="section-eyebrow">Let&apos;s work together</div>
           <h2 className="section-title">Get in Touch</h2>
 
-          <div ref={headlineRef} className="mt-10 max-w-4xl">
+          <div className="mt-6! max-w-4xl">
             <h2 className="text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.08] tracking-[-0.02em] font-display font-medium">
               Let&apos;s build
               <br />
@@ -90,77 +49,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Email line */}
-        <div className="mt-20 border-t border-border pt-10 md:pt-12">
-          <div className="text-sm text-fg-muted font-light mb-3">Email me at</div>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="text-2xl md:text-3xl font-display font-medium text-fg hover:text-accent transition-colors"
-            data-cursor="EMAIL"
-          >
-            {EMAIL}
-          </a>
-        </div>
-
-        {/* Action buttons */}
-        <div ref={ctaRef} className="mt-16 flex flex-wrap gap-3 md:gap-4">
-          <a
-            href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-            data-cursor="HIRE"
-          >
-            Hire Me
-          </a>
-          <a
-            href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary group"
-            data-cursor="CONNECT"
-          >
-            Get in Touch
-            <svg
-              className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-          <a
-            href="/resume.html"
-            className="btn btn-secondary group"
-            data-cursor="RESUME"
-          >
-            Resume
-            <svg
-              className="w-4 h-4 transition-transform duration-500 group-hover:translate-y-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
-              />
-            </svg>
-          </a>
-        </div>
-
         {/* Bottom bar */}
         <div
-          ref={metaRef}
-          className="mt-24 md:mt-28 flex flex-col md:flex-row md:items-center justify-between gap-8 py-12 border-t border-border"
+          className="mt-14! md:mt-16! flex flex-col md:flex-row md:items-center justify-between gap-8! pt-12! pb-10! border-t border-border"
         >
           <div className="flex flex-col gap-1.5">
             <div className="text-base font-semibold text-fg">Zuneera Tariq</div>
@@ -176,7 +67,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="w-11 h-11 rounded-full border border-border flex items-center justify-center text-fg-muted hover:text-black hover:bg-accent hover:border-accent transition-colors duration-300"
-              data-cursor="OPEN"
+              data-cursor=""
             >
               <LinkedInIcon className="w-4 h-4" />
             </a>
@@ -186,7 +77,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label="GitHub"
               className="w-11 h-11 rounded-full border border-border flex items-center justify-center text-fg-muted hover:text-black hover:bg-accent hover:border-accent transition-colors duration-300"
-              data-cursor="OPEN"
+              data-cursor=""
             >
               <GitHubIcon className="w-4 h-4" />
             </a>
@@ -194,14 +85,15 @@ export default function Footer() {
               href={`mailto:${EMAIL}`}
               aria-label="Email"
               className="w-11 h-11 rounded-full border border-border flex items-center justify-center text-fg-muted hover:text-black hover:bg-accent hover:border-accent transition-colors duration-300"
-              data-cursor="OPEN"
+              data-cursor=""
             >
               <MailIcon className="w-4 h-4" />
             </a>
           </div>
 
-          <div className="text-xs font-mono tracking-[0.2em] uppercase text-fg-dim">
+          <div className="text-xs font-mono tracking-[0.2em] uppercase text-fg-muted">
             &copy; 2026 Zuneera Tariq
+            <span className="hidden md:inline">. All rights reserved.</span>
           </div>
         </div>
       </div>

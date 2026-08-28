@@ -55,25 +55,30 @@ const certifications = [
 
 function useAnimate(refs: React.MutableRefObject<(HTMLDivElement | null)[]>) {
   useEffect(() => {
-    refs.current.forEach((el) => {
-      if (!el) return;
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 88%",
-          },
-        }
+    const tweens = refs.current
+      .filter((el): el is HTMLDivElement => !!el)
+      .map((el) =>
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+              once: true,
+            },
+          }
+        )
       );
-    });
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
     };
   }, [refs]);
 }
@@ -171,7 +176,7 @@ function Certifications() {
 
 export default function Journey() {
   return (
-    <div className="section section-padding">
+    <div id="journey" className="section section-padding">
       <div className="section-inner">
         <div className="flex flex-col gap-16">
           <Experience />

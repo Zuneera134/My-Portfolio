@@ -54,9 +54,9 @@ function useCursorAnimation() {
       targetRef.current.y = e.clientY;
     };
 
-    const handleMouseEnterInteractive = (el: Element) => {
+    const handleMouseEnterInteractive = () => {
       isHoveringRef.current = true;
-      setLabel((el as HTMLElement).dataset.cursor || "");
+      setLabel("");
       gsap.to(cursorDotRef.current, {
         scale: 0,
         duration: 0.3,
@@ -103,9 +103,7 @@ function useCursorAnimation() {
     const setupInteractiveElements = () => {
       const interactives = document.querySelectorAll("[data-cursor]");
       interactives.forEach((el) => {
-        el.addEventListener("mouseenter", () =>
-          handleMouseEnterInteractive(el)
-        );
+        el.addEventListener("mouseenter", handleMouseEnterInteractive);
         el.addEventListener("mouseleave", handleMouseLeaveInteractive);
       });
     };

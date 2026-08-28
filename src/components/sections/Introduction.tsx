@@ -13,53 +13,62 @@ export default function Introduction() {
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
+    const tweens: gsap.core.Tween[] = [];
 
     // Progressive word reveal
     wordRefs.current.forEach((word) => {
       if (!word) return;
-      gsap.fromTo(
-        word,
-        {
-          opacity: 0.1,
-          y: 20,
-          filter: "blur(4px)",
-        },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: word,
-            start: isMobile ? "top 85%" : "top 70%",
-            end: "top 30%",
-            toggleActions: "play none none reverse",
+      tweens.push(
+        gsap.fromTo(
+          word,
+          {
+            opacity: 0.1,
+            y: 20,
+            filter: "blur(4px)",
           },
-        }
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: word,
+              start: isMobile ? "top 85%" : "top 70%",
+              end: "top 30%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        )
       );
     });
 
     // Description fade in
     if (descRef.current) {
-      gsap.fromTo(
-        descRef.current,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: descRef.current,
-            start: "top 80%",
-          },
-        }
+      tweens.push(
+        gsap.fromTo(
+          descRef.current,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: descRef.current,
+              start: "top 80%",
+              once: true,
+            },
+          }
+        )
       );
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tweens.forEach((t) => {
+        t.scrollTrigger?.kill();
+        t.kill();
+      });
     };
   }, []);
 
@@ -75,7 +84,7 @@ export default function Introduction() {
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col justify-center section-padding py-16 md:py-24"
+      className="section section-padding flex flex-col justify-center"
     >
       <div className="max-w-[85vw] md:max-w-[70vw]">
         <span className="section-eyebrow">Introduction</span>
@@ -94,16 +103,14 @@ export default function Introduction() {
 
         <div ref={descRef} className="max-w-xl">
           <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light">
-            I build digital experiences that feel intentional, combining
-            solid engineering with thoughtful design. From concept to
-            deployment, I care about clean architecture, secure systems,
-            and the last 2% of polish.
+            I turn ideas into working software. From a rough concept to a
+            deployed product, I care about how a system behaves end-to-end:
+            clean APIs, sane databases, and an interface people actually enjoy
+            using.
           </p>
           <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
-            BS Computer Science student at COMSATS University Islamabad.
-            Based in Mansehra, Pakistan. Currently exploring full-stack
-            development, databases, and building real-world systems
-            one project at a time.
+            The projects on this page are the ones where I made the decisions
+            and owned the outcome. Pick any one and dig in.
           </p>
         </div>
       </div>

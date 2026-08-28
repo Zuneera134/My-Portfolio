@@ -6,7 +6,12 @@ type Theme = "dark" | "light";
 
 function getInitialTheme(): Theme {
   if (typeof window !== "undefined") {
-    return (localStorage.getItem("theme") as Theme) || "dark";
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") return stored;
+    return window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark";
   }
   return "dark";
 }

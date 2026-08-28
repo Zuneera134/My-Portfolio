@@ -38,7 +38,7 @@ export default function Marquee({
     };
   }, [speed, direction]);
 
-  const repeatedText = `${text} \u00B7 ${text} \u00B7 ${text} \u00B7 ${text} \u00B7 `;
+  const repeatedText = `${text}\u00B7 ${text}\u00B7 ${text}\u00B7 ${text}\u00B7 `;
 
   return (
     <div
@@ -46,10 +46,10 @@ export default function Marquee({
       className={`overflow-hidden whitespace-nowrap ${className}`}
     >
       <div ref={innerRef} className="inline-flex">
-        <span className="text-[clamp(3rem,8vw,8rem)] font-light tracking-tight text-fg-dim opacity-15 pr-4">
+        <span className="text-[clamp(3rem,8vw,8rem)] font-light tracking-tight text-fg-dim opacity-15 pr-1">
           {repeatedText}
         </span>
-        <span className="text-[clamp(3rem,8vw,8rem)] font-light tracking-tight text-fg-dim opacity-15 pr-4">
+        <span className="text-[clamp(3rem,8vw,8rem)] font-light tracking-tight text-fg-dim opacity-15 pr-1">
           {repeatedText}
         </span>
       </div>

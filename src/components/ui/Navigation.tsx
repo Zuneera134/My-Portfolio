@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { scrollToSection } from "@/lib/scroll";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const menuBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,37 +81,33 @@ export default function Navigation() {
   }, [isOpen, openMenu, closeMenu]);
 
   const navLinks = [
-    { label: "Work", href: "#work" },
+    { label: "Projects", href: "#work" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
     { label: "Languages", href: "#languages" },
     { label: "Skills", href: "#skills" },
-    { label: "Experience", href: "#experience" },
-    { label: "Education", href: "#education" },
-    { label: "Contact", href: "#contact" },
+    { label: "Tools", href: "#tools" },
+    { label: "Journey", href: "#journey" },
+    { label: "Contact", href: "#connect" },
   ];
 
   const handleNavClick = (href: string) => {
     closeMenu();
-    setTimeout(() => {
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 700);
+    setTimeout(() => scrollToSection(href), 650);
   };
 
   return (
     <>
       {/* Floating Nav Bar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
+        className={`absolute top-3 left-0 right-0 z-[100] transition-all duration-700 ${
           isScrolled ? "py-4" : "py-6"
         }`}
       >
         <div className="section-padding flex items-center justify-between">
           <div
-            ref={logoRef}
             className="text-base font-mono tracking-[0.2em] uppercase text-fg"
-            data-cursor="OPEN"
+            data-cursor=""
           >
             My Portfolio
           </div>
@@ -121,7 +116,6 @@ export default function Navigation() {
             <ThemeToggle />
 
             <button
-              ref={menuBtnRef}
               onClick={toggleMenu}
               className="flex items-center gap-3 text-base font-mono tracking-[0.15em] uppercase text-fg hover:text-accent transition-colors duration-300"
               data-cursor="MENU"
@@ -160,7 +154,7 @@ export default function Navigation() {
           <div className="mb-12 text-[11px] font-mono tracking-[0.3em] uppercase text-fg-dim">
             Navigation
           </div>
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-2.5 sm:gap-3">
             {navLinks.map((link, i) => (
               <a
                 key={link.label}
@@ -170,7 +164,7 @@ export default function Navigation() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-fg hover:text-accent transition-colors duration-300 whitespace-nowrap"
+                className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-fg hover:text-accent transition-colors duration-300 whitespace-nowrap"
                 style={{ perspective: "600px" }}
                 data-cursor="GO"
               >
@@ -178,13 +172,13 @@ export default function Navigation() {
               </a>
             ))}
           </div>
-          <div className="mt-16 flex items-center gap-8 justify-center text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim">
+          <div className="mt-10 flex items-center gap-8 justify-center text-[11px] font-mono tracking-[0.2em] uppercase text-fg-dim">
             <a
               href="https://github.com/Zuneera134"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-accent transition-colors"
-              data-cursor="OPEN"
+              data-cursor=""
             >
               GitHub
             </a>
@@ -194,7 +188,7 @@ export default function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-accent transition-colors"
-              data-cursor="OPEN"
+              data-cursor=""
             >
               LinkedIn
             </a>
@@ -202,7 +196,7 @@ export default function Navigation() {
             <a
               href="mailto:zuratariq8@gmail.com"
               className="hover:text-accent transition-colors"
-              data-cursor="OPEN"
+              data-cursor=""
             >
               Email
             </a>

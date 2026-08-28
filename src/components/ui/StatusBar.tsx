@@ -2,9 +2,19 @@
 
 import { useEffect, useState } from "react";
 
+const SECTIONS = [
+  { id: "work", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "languages", label: "Languages" },
+  { id: "skills", label: "Skills" },
+  { id: "tools", label: "Tools" },
+  { id: "journey", label: "Journey" },
+  { id: "connect", label: "Contact" },
+];
+
 export default function StatusBar() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [currentSection, setCurrentSection] = useState("001");
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,23 +24,19 @@ export default function StatusBar() {
       const progress = Math.min(scrollTop / docHeight, 1);
       setScrollProgress(progress);
 
-      // Determine section
-      const sections = document.querySelectorAll("section[id]");
-      let current = "001";
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2) {
-          const id = section.getAttribute("id");
-          if (id === "work") current = "002";
-          else if (id === "languages") current = "003";
-          else if (id === "skills") current = "004";
-          else if (id === "journey") current = "005";
+      let current = 0;
+      for (let i = 0; i < SECTIONS.length; i++) {
+        const el = document.getElementById(SECTIONS[i].id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.5) current = i;
         }
-      });
-      setCurrentSection(current);
+      }
+      setActiveIndex(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -47,7 +53,8 @@ export default function StatusBar() {
       {/* Status info */}
       <div className="section-padding flex items-center justify-between py-3">
         <div className="text-[9px] font-mono tracking-[0.3em] uppercase text-fg-dim">
-          {currentSection} · {Math.round(scrollProgress * 100)}%
+          {String(activeIndex + 1).padStart(2, "0")} · {SECTIONS[activeIndex].label} ·{" "}
+          {Math.round(scrollProgress * 100)}%
         </div>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

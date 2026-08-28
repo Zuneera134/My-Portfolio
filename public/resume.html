@@ -1,98 +1,264 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zuneera Tariq - Resume</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.5; padding: 40px; max-width: 820px; margin: 0 auto; }
-    h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
-    .sub { color: #555; margin-top: 4px; }
-    .contact { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 0.85rem; color: #333; }
-    .contact a { color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ccc; }
-    h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin: 32px 0 16px; }
-    h3 { font-size: 1rem; margin-bottom: 2px; }
-    .row { display: flex; justify-content: space-between; gap: 16px; }
-    .muted { color: #666; font-size: 0.85rem; }
-    .role { font-size: 0.9rem; color: #333; margin-bottom: 12px; }
-    ul { padding-left: 18px; margin: 6px 0 14px; }
-    li { margin-bottom: 4px; font-size: 0.9rem; }
-    .item { margin-bottom: 20px; }
-    .tag { display: inline-block; border: 1px solid #aaa; border-radius: 3px; padding: 2px 8px; font-size: 0.8rem; margin: 0 6px 6px 0; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zuneera Tariq — Software Engineering Intern | Full-Stack Developer</title>
+<style>
+  :root {
+    --ink: #16181d;
+    --ink-soft: #43464e;
+    --ink-muted: #6b6f78;
+    --rule: #d7d9de;
+    --accent: #1f2933;
+    --paper: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    font-size: 9.5pt;
+    line-height: 1.3;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 9mm 14mm;
+  }
+
+  /* ---------- Header ---------- */
+  header { border-bottom: 2.5px solid var(--ink); padding-bottom: 7px; }
+  .name {
+    font-size: 23pt;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .title {
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+    margin-top: 2px;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin-top: 6px;
+    font-size: 8.8pt;
+    color: var(--ink-soft);
+  }
+  .contact .sep { margin: 0 10px; color: var(--rule); }
+  .contact a { color: var(--ink-soft); text-decoration: none; }
+  .contact a:hover { color: var(--ink); text-decoration: underline; }
+  .contact b { font-weight: 600; color: var(--ink); }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 8px; }
+  h2 {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+  }
+
+  p.summary { font-size: 9.5pt; color: var(--ink); }
+
+  /* Skills */
+  .skill-group { margin-bottom: 3.5px; }
+  .skill-group strong {
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: uppercase;
+    font-size: 8.2pt;
+    letter-spacing: 0.04em;
+    margin-right: 5px;
+  }
+  .skill-line { color: var(--ink-soft); }
+
+  /* Education */
+  .edu-item { margin-bottom: 6px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .edu-top h3 { font-size: 9.8pt; font-weight: 600; color: var(--ink); }
+  .edu-date { font-size: 8.3pt; color: var(--ink-muted); white-space: nowrap; }
+  .edu-degree { color: var(--ink-soft); font-size: 9.3pt; }
+  .edu-extra { color: var(--ink-muted); font-size: 8.8pt; }
+
+  /* Generic entry (projects / experience) */
+  .entry { margin-bottom: 8px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .entry-top h3 { font-size: 9.8pt; font-weight: 600; color: var(--ink); }
+  .entry-tag { font-size: 8.8pt; color: var(--ink-soft); font-style: italic; }
+  .entry-date { font-size: 8.3pt; color: var(--ink-muted); white-space: nowrap; }
+  .entry-role { font-size: 9pt; color: var(--ink); }
+  ul { list-style: none; margin-top: 3px; }
+  ul li {
+    position: relative;
+    padding-left: 12px;
+    margin-bottom: 2px;
+    color: var(--ink-soft);
+  }
+  ul li:last-child { margin-bottom: 0; }
+  ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* Certifications */
+  .cert-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
+  .cert { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 2px; }
+  .cert-name { color: var(--ink-soft); font-size: 8.8pt; }
+  .cert-year { color: var(--ink-muted); font-size: 8.3pt; white-space: nowrap; }
+
+  footer {
+    margin-top: 10px;
+    border-top: 1px solid var(--rule);
+    padding-top: 5px;
+    text-align: center;
+    font-size: 7.8pt;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { print-color-adjust: exact; }
+    .page { padding: 9mm 14mm; }
+    a { color: inherit; text-decoration: none; }
+    footer { page-break-before: avoid; }
+  }
+</style>
 </head>
 <body>
-  <h1>Zuneera Tariq</h1>
-  <div class="sub">Computer Science Student · Full-Stack Developer</div>
-  <div class="contact">
-    <span>Mansehra, KPK, Pakistan</span>
-    <a href="mailto:zuratariq8@gmail.com">zuratariq8@gmail.com</a>
-    <a href="https://github.com/Zuneera134">GitHub</a>
-    <a href="https://www.linkedin.com/in/zuneera-tariq-a4b5012b5">LinkedIn</a>
-  </div>
+  <div class="page">
 
-  <h2>Summary</h2>
-  <p class="role">Computer Science student at COMSATS University Islamabad (Abbottabad Campus) with strong foundations in full-stack development. Experienced building real-world applications in React, Node.js, Express, and databases. Recognized for outstanding academic performance and a hands-on approach to learning.</p>
+    <header>
+      <div class="name">Zuneera Tariq</div>
+      <div class="title">Computer Science Student · Full-Stack Developer</div>
+      <div class="contact">
+        <span><b>Mansehra, KPK, Pakistan</b></span>
+        <span class="sep">|</span>
+        <a href="mailto:zuratariq8@gmail.com">zuratariq8@gmail.com</a>
+        <span class="sep">|</span>
+        <a href="https://www.linkedin.com/in/zuneera-tariq-a4b5012b5">linkedin.com/in/zuneera-tariq</a>
+        <span class="sep">|</span>
+        <a href="https://github.com/Zuneera134">github.com/Zuneera134</a>
+      </div>
+    </header>
 
-  <h2>Work Experience</h2>
-  <div class="item">
-    <div class="row"><h3>Full Stack Developer Intern - Hayat Dev</h3><span class="muted">2026</span></div>
-    <div class="muted">4-month internship</div>
-    <ul>
-      <li>Built a complete College Management System with 8 role-based portals (Student, Teacher, Parent, Principal, Accountant, Admission Officer, Exam Officer).</li>
-      <li>Implemented secure token-based authentication and role-based access control.</li>
-      <li>Developed with React.js, Node.js, Express.js, and MySQL, including dark/light mode.</li>
-    </ul>
-  </div>
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary">Computer Science student at COMSATS University Islamabad (Abbottabad Campus) seeking a Software Engineering internship. Proven full-stack developer — React, Next.js, Node.js, Express, MySQL, MongoDB — with a strong foundation in data structures, algorithms, OOP and the software development lifecycle.</p>
+    </section>
 
-  <h2>Projects</h2>
-  <div class="item">
-    <div class="row"><h3>SkillLink</h3><span class="muted">Full-Stack Hiring Platform</span></div>
-    <p class="role">React.js · Node.js · Express.js · MongoDB · Cloudinary</p>
-    <ul>
-      <li>Verified service-provider hiring platform with ratings, reviews, and an emergency service feature.</li>
-      <li>Three dashboards - Admin, Worker, and Client - with secure role-based access.</li>
-    </ul>
-  </div>
-  <div class="item">
-    <div class="row"><h3>College Management System</h3><span class="muted">Full-Stack</span></div>
-    <p class="role">React.js · Node.js · Express.js · MySQL</p>
-    <ul><li>8 role-based portals with token auth and dark/light mode.</li></ul>
-  </div>
-  <div class="item">
-    <div class="row"><h3>Skyscrapper Stack Builder</h3><span class="muted">Java Game</span></div>
-    <p class="role">Java · Java Swing · OOP · Stack</p>
-    <ul><li>Block-stacking game using the Stack data structure, with scoreboard of top three highscores.</li></ul>
-  </div>
-  <div class="item">
-    <div class="row"><h3>Quiz Management System</h3><span class="muted">Java Application</span></div>
-    <p class="role">Java · Java Swing · GUI · OOP</p>
-    <ul><li>Admin/Teacher/Student quiz platform for creating quizzes and viewing results.</li></ul>
-  </div>
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skill-group"><strong>Languages:</strong><span class="skill-line">JavaScript, Java, Python, C&#35;, C, HTML5, CSS3</span></div>
+      <div class="skill-group"><strong>Frontend:</strong><span class="skill-line">React.js, Next.js, Responsive Design, UI Development</span></div>
+      <div class="skill-group"><strong>Backend &amp; APIs:</strong><span class="skill-line">Node.js, Express.js, REST APIs, Authentication, Role-Based Access Control</span></div>
+      <div class="skill-group"><strong>Databases:</strong><span class="skill-line">MySQL, MongoDB, Mongoose, Database Design</span></div>
+      <div class="skill-group"><strong>Core CS:</strong><span class="skill-line">Data Structures &amp; Algorithms, Object-Oriented Programming, Problem Solving, Software Development</span></div>
+      <div class="skill-group"><strong>Tools:</strong><span class="skill-line">Git &amp; GitHub, GitHub Actions (CI/CD), VS Code, npm, Postman, Linux, Cloudinary</span></div>
+    </section>
 
-  <h2>Skills</h2>
-  <div>
-    <span class="tag">JavaScript</span><span class="tag">Java</span><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span>
-    <span class="tag">C</span><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">OOP</span><span class="tag">Data Structures</span><span class="tag">Git &amp; GitHub</span>
-  </div>
+    <section>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <div class="edu-top"><h3>COMSATS University Islamabad, Abbottabad Campus</h3><span class="edu-date">2024 – Present</span></div>
+        <div class="edu-degree">Bachelor of Science in Computer Science · Grade: A</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-top"><h3>The Peace Schools and Colleges</h3><span class="edu-date">Completed</span></div>
+        <div class="edu-degree">Intermediate / Higher Secondary</div>
+        <div class="edu-extra">Grade: A1 · 1066/1100 (97%) · Top 20 Board Position Holder</div>
+      </div>
+    </section>
 
-  <h2>Certifications</h2>
-  <div class="item">
-    <div class="row"><h3>Web Development Fundamentals - IBM</h3><span class="muted">2026</span></div>
-    <div class="row"><h3>Data Science &amp; Analytics - HP LIFE</h3><span class="muted">2026</span></div>
-    <div class="row"><h3>Google Business Intelligence - Google</h3><span class="muted">2023</span></div>
-  </div>
+    <section>
+      <h2>Projects</h2>
 
-  <h2>Education</h2>
-  <div class="item">
-    <div class="row"><h3>COMSATS University Islamabad, Abbottabad Campus</h3><span class="muted">2024 – Present</span></div>
-    <div class="muted">Bachelor of Science, Computer Science · Grade: A</div>
-  </div>
-  <div class="item">
-    <div class="row"><h3>The Peace Schools and Colleges</h3><span class="muted">Completed</span></div>
-    <div class="muted">Grade: A1 · 1066/1100 (97%)</div>
-    <div class="muted">Recognized as a Top 20 Board Position Holder for outstanding academic performance.</div>
+      <div class="entry">
+        <div class="entry-top">
+          <h3>Mezban — Pizza &amp; Burger Shop Platform</h3>
+          <span class="entry-tag">Next.js · Node.js · MongoDB</span>
+        </div>
+        <ul>
+          <li>Built a production-grade ordering platform in a monorepo (Next.js + TypeScript, Node.js/Express + MongoDB) and implemented a full CI/CD pipeline with automated SAST, secret and container security scans and zero-downtime rollback.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>HRMS — AI Human Resource Management System</h3>
+          <span class="entry-tag">React.js · Node.js · MongoDB · AI</span>
+        </div>
+        <ul>
+          <li>Built a full-stack HR platform covering employee, attendance, leave and approval workflows with secure authentication, plus AI resume parsing and automated candidate screening.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>College Management System</h3>
+          <span class="entry-tag">React.js · Node.js · MySQL</span>
+        </div>
+        <ul>
+          <li>Delivered a full-stack system digitalizing college operations across 8 role-based portals (Student, Teacher, Parent, Principal, Accountant, Admission Officer, Exam Officer) with token-based auth and RBAC.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>SkillLink — Service-Provider Hiring Platform</h3>
+          <span class="entry-tag">React.js · Node.js · MongoDB · Cloudinary</span>
+        </div>
+        <ul>
+          <li>Developed a full-stack platform for hiring verified workers with ratings/reviews, provider verification and three role-based dashboards (Admin, Worker, Client) with secure access control.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="entry">
+        <div class="entry-top"><h3>Full Stack Developer Intern</h3><span class="entry-date">2026 · 4 months</span></div>
+        <div class="entry-role">Hayat Dev, Pakistan</div>
+        <ul>
+          <li>Engineered 8 role-based portals with secure token-based authentication and role-based access control using React.js, Node.js, Express.js and MySQL.</li>
+          <li>Owned the full development lifecycle — from requirements and design to version control, API design, responsive UI and deployment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert"><span class="cert-name">Web Development Fundamentals — IBM</span><span class="cert-year">2026</span></div>
+        <div class="cert"><span class="cert-name">Data Science &amp; Analytics — HP LIFE</span><span class="cert-year">2026</span></div>
+        <div class="cert"><span class="cert-name">Google Business Intelligence — Google</span><span class="cert-year">2023</span></div>
+      </div>
+    </section>
+
+    <footer>Zuneera Tariq · Software Engineering Intern · Full-Stack Developer</footer>
   </div>
 </body>
 </html>
