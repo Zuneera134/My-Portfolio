@@ -21,7 +21,7 @@ const skillGroups = [
   },
   {
     category: "Concepts",
-    items: ["Data Structures", "OOP", "Problem Solving"],
+    items: ["Data Structures", "OOP", "Problem Solving", "DBMS", "OS"],
   },
 ];
 

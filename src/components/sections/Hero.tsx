@@ -6,14 +6,13 @@ import { scrollToSection } from "@/lib/scroll";
 import HeroLaptop from "./HeroLaptop";
 
 export default function Hero() {
-  const badge = useRef<HTMLDivElement>(null);
   const name = useRef<HTMLDivElement>(null);
   const desc = useRef<HTMLDivElement>(null);
   const actions = useRef<HTMLDivElement>(null);
   const stats = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const list = [badge, name, desc, actions, stats];
+    const list = [name, desc, actions, stats];
     const tl = gsap.timeline({ delay: 0.2 });
     list.forEach((r, i) => {
       if (!r.current) return;
@@ -46,13 +45,6 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-[1200px] mx-auto pt-12 pb-8 px-6 flex items-center gap-6 md:gap-8 lg:gap-10">
         <div className="flex-1">
-        <div ref={badge} className="opacity-0 mb-2!">
-          <span className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-border text-[11px] font-mono tracking-[0.15em] uppercase text-fg-muted">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            Open to Internships &amp; Opportunities
-          </span>
-        </div>
-
         <div ref={name} className="mt-5! opacity-0">
           <h1 className="font-display text-[clamp(2.8rem,7vw,6rem)] leading-[1.05] font-medium tracking-tight">
             Zuneera{" "}

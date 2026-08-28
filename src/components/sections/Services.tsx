@@ -92,7 +92,7 @@ export default function Services() {
               ref={(el) => { cardRefs.current[i] = el; }}
               className="card group relative flex flex-col overflow-hidden"
             >
-              <div className="text-accent mb-5">{service.icon}</div>
+              <div className="text-accent mb-8!">{service.icon}</div>
               <h3 className="font-display text-xl leading-tight font-medium">
                 {service.title}
               </h3>

@@ -62,7 +62,7 @@ export const projects: Project[] = [
     subtitle: "AI-centric Human Resource Management System",
     description:
       "AI-assisted HR system with employee, attendance, leave and approval workflows, plus resume parsing and AI candidate screening.",
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "AI"],
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
     role: "Full Stack Developer, TechNest x Insiscos",
     year: "2026",
     color: "#8B5CF6",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     subtitle: "Pizza Burger Shop, full-stack production platform",
     description:
       "Production-grade ordering platform for a pizza & burger shop. Next.js + Node/Express + MongoDB in a monorepo, with CI/CD, automated security scans, and zero-downtime rollbacks.",
-    tech: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "Flutter"],
+    tech: ["Next.js", "Node.js", "Express.js", "MongoDB"],
     role: "Full Stack Developer, Insiscos",
     year: "2026",
     color: "#FF6B35",

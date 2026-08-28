@@ -45,13 +45,14 @@ export default function About() {
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
               I&apos;ve shipped real systems from planning to production,
-              including a College Management System and a pizza shop platform
-              with a full CI/CD pipeline. I sweat the details most people
-              skip, and I care how things work when nobody is watching.
+              including a College Management System and Skill Link, a
+              verified service provider hiring platform. I sweat the details
+              most people skip, and I care how things work when nobody is
+              watching.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-fg-muted font-light mt-6">
-              Right now I&apos;m growing as a full-stack developer in Mansehra,
-              Pakistan, and looking for internships where I can add real value.
+              Right now I&apos;m growing as a full-stack developer and looking
+              for jobs where I can add real value.
             </p>
 
             <a
