@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects, GITHUB_URL } from "@/data/projects";
+import { projects } from "@/data/projects";
 gsap.registerPlugin(ScrollTrigger);
 
 function useReveal<T extends HTMLElement>(start = "top 88%") {
@@ -107,19 +107,7 @@ export default function Projects() {
           my CS studies and internship.
         </p>
 
-        <div className="mt-10 flex justify-end">
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[11px] font-mono tracking-[0.15em] uppercase text-accent hover:underline"
-            data-cursor=""
-          >
-            view all on GitHub →
-          </a>
-        </div>
-
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <ProjectCard key={project.number} project={project} />
           ))}

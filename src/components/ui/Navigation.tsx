@@ -87,7 +87,7 @@ export default function Navigation() {
     { label: "Languages", href: "#languages" },
     { label: "Skills", href: "#skills" },
     { label: "Tools", href: "#tools" },
-    { label: "Journey", href: "#journey" },
+    { label: "Experience", href: "#journey" },
     { label: "Contact", href: "#connect" },
   ];
 
