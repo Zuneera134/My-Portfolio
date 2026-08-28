@@ -2,6 +2,8 @@
 
 A personal portfolio built with Next.js, Tailwind CSS and GSAP. It showcases my work as a full-stack developer — the projects I've built, the tech I work with, and how to get in touch. Clean, dark/light theme, with a custom laptop hero and smooth scroll.
 
+🔗 **Live:** [https://my-portfolio-pi-two-36.vercel.app](https://my-portfolio-pi-two-36.vercel.app)
+
 ## What's inside
 
 - **Hero** — a custom SVG laptop with a live typewriter, GSAP entrance animations and a stat strip
@@ -9,7 +11,7 @@ A personal portfolio built with Next.js, Tailwind CSS and GSAP. It showcases my 
 - **Projects** — real work I've shipped, from college systems to production platforms
 - **Services** — the things I can build for you, from idea to deployed
 - **Skills & Tools** — the languages, frameworks and tools I use every day
-- **Journey** — my experience and education timeline
+- **Experience** — my experience and education timeline
 - **Contact** — a form that opens a ready-to-send Gmail compose
 
 ## Tech stack
