@@ -42,10 +42,6 @@ To ship a production build:
 npm run build
 ```
 
-## Deployment
-
-This app is ready to deploy on [Vercel](https://vercel.com). Push the repo to GitHub, import it into Vercel, and it auto-detects Next.js and builds it for you.
-
 ## Contact
 
 - Email: [zuratariq8@gmail.com](mailto:zuratariq8@gmail.com)
