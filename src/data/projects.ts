@@ -83,4 +83,17 @@ export const projects: Project[] = [
     link: "https://github.com/Ininsico/Meezban",
     featured: true,
   },
+  {
+    id: "project-06",
+    number: "06",
+    title: "UNO",
+    subtitle: "UNO card game built in C# with Windows Forms",
+    description:
+      "A playable UNO card game with a desktop GUI, built in C# using Windows Forms. Implements turn-based play and core UNO rules.",
+    tech: ["C#", ".NET", "Windows Forms", "OOP"],
+    role: "Personal Project",
+    year: "2025",
+    color: "#E63946",
+    link: "https://github.com/Zuneera134/UnoWinforms",
+  },
 ];

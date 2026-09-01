@@ -78,6 +78,21 @@ function ProjectCard({ project }: { project: CardProject }) {
             </span>
           ))}
         </div>
+
+        {/* CTA */}
+        {project.link.startsWith("https://github.com/Zuneera134/") && (
+          <div className="mt-auto pt-6">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.1em] uppercase text-accent hover:underline"
+              data-cursor=""
+            >
+              View on GitHub →
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
