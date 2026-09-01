@@ -9,6 +9,7 @@ export interface Project {
   year: string;
   color: string;
   link: string;
+  collab?: boolean;
   featured?: boolean;
   impact?: string[];
 }
@@ -28,6 +29,7 @@ export const projects: Project[] = [
     year: "2026",
     color: "#CCFF00",
     link: "https://github.com/ahmadAwann/CMS",
+    collab: true,
   },
   {
     id: "project-02",
@@ -68,6 +70,7 @@ export const projects: Project[] = [
     color: "#8B5CF6",
     link: "https://github.com/artdevelopers-artbyzefa/HRMS",
     featured: true,
+    collab: true,
   },
   {
     id: "project-05",
@@ -82,6 +85,7 @@ export const projects: Project[] = [
     color: "#FF6B35",
     link: "https://github.com/Ininsico/Meezban",
     featured: true,
+    collab: true,
   },
   {
     id: "project-06",

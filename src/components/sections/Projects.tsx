@@ -44,6 +44,7 @@ type CardProject = {
   year: string;
   color: string;
   link: string;
+  collab?: boolean;
   impact?: string[];
 };
 
@@ -80,7 +81,14 @@ function ProjectCard({ project }: { project: CardProject }) {
         </div>
 
         {/* CTA */}
-        {project.link.startsWith("https://github.com/Zuneera134/") && (
+        {project.collab ? (
+          <div className="mt-auto pt-6">
+            <span className="inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.1em] uppercase text-fg-muted">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              Collaboration project
+            </span>
+          </div>
+        ) : (
           <div className="mt-auto pt-6">
             <a
               href={project.link}
